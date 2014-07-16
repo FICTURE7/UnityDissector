@@ -8,5 +8,6 @@ namespace Unity3dDecompiler.Unity
 {
     class CompressedFileHeader
     {
+        //Need to complete stuffs
     }
 }
