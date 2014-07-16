@@ -1,4 +1,10 @@
 Unity3D-Deompiler
 =================
 
-A .unity3d file decompiler/unpacker(If you have a better name, let me know) made in C# and pretty badly written.
+Some classes written(pretty badly) in C# that can be used to decompile/unpack .unity3d files.
+
+###Usage Example:
+```
+Unpacker unpacker = new Unpacker("Your directory here");
+unpacker.Unpack();
+```
