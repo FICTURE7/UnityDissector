@@ -36,8 +36,7 @@ Offset | 00 | 01 | 02 | 03 | 04 | 05 | 06 | 07 | 08 | 09 | 0A | 0B | 0C | 0D | 0
 
 ######TEXT VIEW
 ```
-U n i t y W e b . . . . . 3 . x . x . 4 . 2 . 1 f 4 . . $ å . . . . < . . . . . . . . . $ ä 
-Ï . s \ . $ å . . . . 8 .
+U n i t y W e b . . . . . 3 . x . x . 4 . 2 . 1 f 4 . . $ å . . . . < . . . . . . . . . $ ä Ï . s \ . $ å . . . . 8 .
 ```
 
 The first 9 bytes, `55 6E 69 74 79 57 65 62 *00*`, of the header is a string, `UnityWeb`. I guess we will call it the .unity3d file signature. 
