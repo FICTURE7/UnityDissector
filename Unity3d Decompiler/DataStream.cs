@@ -14,6 +14,13 @@ namespace Unity3dDecompiler
             MainStream = stream;
         }
 
+        public DataStream(byte[] data)
+        {
+            Stream stream = new MemoryStream(data);
+            MainStream = stream;
+            stream = null;
+        }
+
         public int ReadInt()
         {
             var bytes = new byte[4];
@@ -58,7 +65,12 @@ namespace Unity3dDecompiler
 
         public void SkipBytes(int count)
         {
-            MainStream.Read(new byte[count], 0, count);
+            MainStream.Position = MainStream.Position + count;
+        }
+
+        public void Goto(int offset)
+        {
+            MainStream.Position = offset;
         }
     }
 }

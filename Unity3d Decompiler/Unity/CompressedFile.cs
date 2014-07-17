@@ -27,10 +27,10 @@ namespace Unity3dDecompiler.Unity
             _Bytes = file;
             _Size = file.Length;
             _header = ParseHeader();
-            _HeaderBytes = GetFileHeader(Convert.ToInt32(_header[5]));
+            _HeaderBytes = GetHeaderBytes(Convert.ToInt32(_header[5]));
         }
 
-        public byte[] GetFileHeader(int offset)
+        public byte[] GetHeaderBytes(int offset)
         {
             _HeaderBytes = new byte[offset];
             Buffer.BlockCopy(_Bytes, 0, _HeaderBytes, 0, offset);

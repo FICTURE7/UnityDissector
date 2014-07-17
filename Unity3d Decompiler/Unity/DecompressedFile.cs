@@ -31,11 +31,11 @@ namespace Unity3dDecompiler.Unity
             _Bytes = file;
             _Size = file.Length;
             _files = ParseHeader();
-            _HeaderBytes = GetFileHeader(_files[0].Offset);
+            _HeaderBytes = GetHeaderBytes(_files[0].Offset);
             GetFiles();
         }
 
-        public byte[] GetFileHeader(int offset)
+        public byte[] GetHeaderBytes(int offset)
         {
             _HeaderBytes = new byte[offset];
             Buffer.BlockCopy(_Bytes, 0, _HeaderBytes, 0, offset);

@@ -48,6 +48,24 @@ namespace Unity3dDecompiler
             }
         }
 
+        public void BurteForceUnpack(int timesToTry)
+        {
+            for (int i = 0; i < timesToTry; i++)
+            {
+                try
+                {
+                    byte[] buf = new byte[_compressedFile.Bytes.Length - 1];
+                    Buffer.BlockCopy(_compressedFile.Bytes, i, buf, 0, buf.Length);
+
+                    SevenZipHelper.Decompress(buf);
+                    ConsoleIO.WriteInfo("Was able to decompress file at offset: " + i.ToString("X"));
+                    break;
+                }
+                catch
+                { }
+            }
+        }
+
         public void Unpack()
         {
             byte[] buf = new byte[_compressedFile.Bytes.Length - _compressedFile.HeaderBytes.Length];
