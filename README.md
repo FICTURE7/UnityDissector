@@ -5,8 +5,13 @@ Some classes written(pretty badly) in C# that can be used to decompile/unpack .u
 
 ###Usage Example
 ```javascript
-    Unpacker unpacker = new Unpacker("Direcory pointing to file");
+    Unpacker unpacker = new Unpacker("Directory pointing to file");
     unpacker.Unpack();
+```
+or
+```javascript
+    Unpacker unpacker = new Unpacker("Directory pointing to file");
+    unpacker.BruteForceUnpack(250); //Not recommanded way to do it. :/
 ```
 =================
 ###Data Types
