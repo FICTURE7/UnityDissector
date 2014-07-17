@@ -63,6 +63,11 @@ The next 4 bytes, `00 00 02 38` is an int, `568`. The offset were the data start
 
 The remaining 1 byte, `00` maybe is a null terminator?
 
+####Decompressed File Header
+
+Here is an example of a decompressed unity3d file's header, partly because make tables in markdown is a pain in the butt.
+
+
 =================
 ###TODO List
 - [ ] Complete documentation.
