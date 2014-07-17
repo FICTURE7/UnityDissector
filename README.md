@@ -65,6 +65,7 @@ The remaining 1 byte, `00` maybe is a null terminator?
 =================
 ###TODO List
 - [ ] Complete documentation.
+- [ ] Complete CompressedFileHeader.cs
 - [ ] Clean the code.
 - [ ] Add repacking function.
 - [ ] Add output log file.
