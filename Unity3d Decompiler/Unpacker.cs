@@ -64,6 +64,8 @@ namespace Unity3dDecompiler
                 }
                 catch
                 { }
+
+                ConsoleIO.WriteError("Failed to brute force unpack file. Tried: " + i.ToString());
             }
 
             _decompressedFile = new DecompressedFile(SevenZipHelper.Decompress(buf));
