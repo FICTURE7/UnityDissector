@@ -38,14 +38,25 @@ U n i t y W e b . . . . . 3 . x . x . 4 . 2 . 1 f 4 . . $ å . . . . < . . . . .
 Ï . s \ . $ å . . . . 8 .
 ```
 
-The first 8 bytes, "55 6E 69 74 79 57 65 62 *00*", of the header is a string, "UnityWeb". I guess we will call it the .unity3d file signature. 
+The first 9 bytes, "55 6E 69 74 79 57 65 62 *00*", of the header is a string, "UnityWeb". I guess we will call it the .unity3d file signature. 
 
 The next 4 bytes, "00 00 00 03" bytes is an int, '3'. Still  not really sure about it, maybe its the build number? But it seems to be a static value.
 
-The next 5 bytes, "33 2E 78 2E 78 *00*", of the header is a string, "3.x.x". It is the Unity Webplayer minium requirement?
+The next 6 bytes, "33 2E 78 2E 78 *00*" is a string, "3.x.x". It is the Unity Webplayer minium requirement?
+
+The next 8 bytes, "34 2E 32 2E 31 66 34 *00*" is a string "4.2.1f4". Maybe it could be the version of the Unity Engine it was build.
+
+The next 4 bytes, "00 24 E5 0B" is an int, '2417931'.  It is the file size in bytes.
+
+The next 4 bytes, "00 00 00 3C" is an int, '60'. It is the offset were the data starts/ending of header?
+
+The next 8 bytes, "00 00 00 01 00 00 00 01", I don't know much about them. Maybe they are long or 2 ints but they seems to be static too.
+
+The next 4 bytes, "00 24 E4 CF" is an int, '2417871'. It is the file size without the header.
 
 =================
 ###TODO List
+- [ ] Complete documentation.
 - [ ] Clean the code.
 - [ ] Add repacking function.
 - [ ] Add output log file.
