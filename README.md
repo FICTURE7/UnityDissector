@@ -25,7 +25,7 @@ This section will be giving you the info about .unity3d files header and other s
 
 ####Compressed File Header
 
-Here is an example of a compressed unity3d file's header. 
+Here is an example of a compressed unity3d file's header and also get yourself a hex editor such as [HxD](http://mh-nexus.de/en/downloads.php?product=HxD)
 ######HEX VIEW
 ```
 55 6E 69 74 79 57 65 62 00 00 00 00 03 33 2E 78 2E 78 00 34 2E 32 2E 31 66 34 00 00 24 E5 0B
