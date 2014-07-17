@@ -52,7 +52,15 @@ The next 4 bytes, "00 00 00 3C" is an int, '60'. It is the offset were the data 
 
 The next 8 bytes, "00 00 00 01 00 00 00 01", I don't know much about them. Maybe they are long or 2 ints but they seems to be static too.
 
-The next 4 bytes, "00 24 E4 CF" is an int, '2417871'. It is the file size without the header.
+The next 4 bytes, "00 24 E4 CF" is an int, '2417871'. The file size without the header.
+
+The next 4 bytes, "00 73 5C A0" is an int, '7560352'. The file size decompressed.
+
+The next 4 bytes, "00 24 E5 0B" is an int, '2417931'. The file size in bytes, again?
+
+The next 4 bytes, "00 00 02 38" is an int, '568'. The offset were the data starts in decompressed file.
+
+The remaining 1 byte, "00" maybe is a null terminator?
 
 =================
 ###TODO List
