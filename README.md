@@ -12,7 +12,7 @@ Some classes written(pretty badly) in C# that can be used to decompile/unpack .u
 ###Data Types
 
 Type | Size | Range | Note |
------------- | -------------| ------------- | ------------- |
+--- | ---| --- | --- |
 int | 4 bytes | -2147483648 to 2147483647 | Not really sure if signed or not |
 string | N/A | N/A | Null terminated |
 
@@ -27,6 +27,10 @@ This section will be giving you the info about .unity3d files header and other s
 
 Here is an example of a compressed unity3d file's header and also get yourself a hex editor such as [HxD](http://mh-nexus.de/en/downloads.php?product=HxD)
 ######HEX VIEW
+Offset | 01 | 02 | 03 | 04 | 05 | 06 | 07 | 08 | 09 | 0A | 0B | 0C | 0D | 0E | 0F |
+--- | ---| --- | --- |--- | ---| --- | --- |--- | ---| --- | --- |--- | ---| --- | --- |
+| |55 | 6E | 69 | 74 | 79 | 57 | 65 | 62 | 00 | 00 | 00 | 00 | 03 | 33 |
+
 ```
 55 6E 69 74 79 57 65 62 00 00 00 00 03 33 2E 78 2E 78 00 34 2E 32 2E 31 66 34 00 00 24 E5 0B
 00 00 00 3C 00 00 00 01 00 00 00 01 00 24 E4 CF 00 73 5C A0 00 24 E5 0B 00 00 02 38 00
