@@ -33,6 +33,14 @@ namespace Unity3dDecompiler.Unity
             _files = ParseHeader();
             _HeaderBytes = GetHeaderBytes(_files[0].Offset);
             GetFiles();
+
+            ConsoleIO.Log("Decompressed file size: " + _Bytes.Length);
+            ConsoleIO.Log("Decompressed file header size: " + _HeaderBytes.Length);
+            ConsoleIO.Log("Files: ");
+            for (int i = 0; i < _files.Length; i++)
+            {
+                ConsoleIO.Log("Name: \"" + _files[i].Name + "\" Size: " +  _files[i].Size + " Offset: " + _files[i].Offset);
+            }
         }
 
         public byte[] GetHeaderBytes(int offset)

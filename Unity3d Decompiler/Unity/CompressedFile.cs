@@ -54,27 +54,33 @@ namespace Unity3dDecompiler.Unity
                     FileInfo[1] = fileReader.ReadInt().ToString();
                     //Unity Engine version
                     FileInfo[2] = fileReader.ReadString();
-                    ConsoleIO.Log("Unity WebPlayer version: " + FileInfo[1], ConsoleIO.LogType.Info);
+                    ConsoleIO.Log("Unity WebPlayer version: " + FileInfo[2], ConsoleIO.LogType.Info);
                     //Full Unity Engine version
                     FileInfo[3] = fileReader.ReadString();
-                    ConsoleIO.Log("Unity Engine version: " + FileInfo[1], ConsoleIO.LogType.Info);
+                    ConsoleIO.Log("Unity Engine version: " + FileInfo[3], ConsoleIO.LogType.Info);
                     //Compressed file size.
                     FileInfo[4] = fileReader.ReadInt().ToString();
+                    ConsoleIO.Log("Compressed file size: " + FileInfo[4], ConsoleIO.LogType.Info);
                     //Begin of compressed data/end of header
                     FileInfo[5] = fileReader.ReadInt().ToString();
+                    ConsoleIO.Log("Offset of compressed data: " + FileInfo[5], ConsoleIO.LogType.Info);
                     fileReader.SkipBytes(8);
                     //Compressed size file without header.
                     FileInfo[6] = fileReader.ReadInt().ToString();
+                    ConsoleIO.Log("Compressed file size: " + FileInfo[6], ConsoleIO.LogType.Info);
                     //Decompressed file size.
                     FileInfo[7] = fileReader.ReadInt().ToString();
+                    ConsoleIO.Log("Decompressed file size: " + FileInfo[7], ConsoleIO.LogType.Info);
                     //Compressed file size.
                     FileInfo[8] = fileReader.ReadInt().ToString();
+                    ConsoleIO.Log("Compressed file size: " + FileInfo[8], ConsoleIO.LogType.Info);
                     if (FileInfo[4] != FileInfo[8] || FileInfo[4] != _Size.ToString() || FileInfo[8] != _Size.ToString())
                     {
                         ConsoleIO.WriteWarning("Compressed file size does not match header.");
                     }
-                    //Begining of uncompressed data in uncompressed file.
+                    //Begining of uncompressed data in decompressed file.
                     FileInfo[9] = fileReader.ReadInt().ToString();
+                    ConsoleIO.Log("Begining of data in decompressed file: " + FileInfo[9], ConsoleIO.LogType.Info);
                     return FileInfo;
                 }
                 else

@@ -35,10 +35,14 @@ namespace Unity3dDecompiler
             if (filePath != null && Path.GetExtension(filePath) == ".unity3d")
             {
                 _filePath = filePath;
+                ConsoleIO.Log("File path: " + _filePath);
                 _fileName = Path.GetFileNameWithoutExtension(filePath);
+                ConsoleIO.Log("File name: " + _fileName);
                 _fileExtension = Path.GetExtension(filePath);
+                ConsoleIO.Log("File extension: " + _fileExtension);
                 _fileBytes = FileToRead(filePath);
                 _fileSize = _fileBytes.LongLength;
+                ConsoleIO.Log("File Size: " + _fileSize);
 
                 _compressedFile = new CompressedFile(_fileBytes);
             }
@@ -50,6 +54,7 @@ namespace Unity3dDecompiler
 
         public void BurteForceUnpack(int timesToTry)
         {
+            ConsoleIO.WriteInfo("Brute forcing unpacking file.");
             byte[] buf = null;
             for (int i = 0; i < timesToTry; i++)
             {

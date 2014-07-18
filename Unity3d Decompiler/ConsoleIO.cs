@@ -21,7 +21,7 @@ namespace Unity3dDecompiler
         public static void WriteInfo(string line)
         {
             WriteColor("Info: ", ConsoleColor.DarkMagenta);
-            Log(line);
+            Log("CONSOLE OUT:" + line);
             Console.WriteLine(line);
         }
 
@@ -34,7 +34,7 @@ namespace Unity3dDecompiler
         public static void WriteWarning(string line)
         {
             WriteColor("Warning: ", ConsoleColor.DarkYellow);
-            Log(line);
+            Log("CONSOLE OUT:" + line);
             Console.WriteLine(line);
         }
 
@@ -47,7 +47,7 @@ namespace Unity3dDecompiler
         public static void WriteError(string line)
         {
             WriteColor("Error: ", ConsoleColor.DarkRed);
-            Log(line);
+            Log("CONSOLE OUT:" + line);
             Console.WriteLine(line);
         }
 
@@ -59,13 +59,21 @@ namespace Unity3dDecompiler
 
         public static void Log(string line, LogType type)
         {
-            File.WriteAllText(AppDomain.CurrentDomain.BaseDirectory + @"\Console Debug\" + DateTime.Now.ToString("t"), log);
+            string folderName = DateTime.Now.ToString("t");
+            folderName = folderName.Replace(':', '-');
+            Directory.CreateDirectory(AppDomain.CurrentDomain.BaseDirectory + @"Console Debug\");
+            string path = AppDomain.CurrentDomain.BaseDirectory + @"Console Debug\" + folderName + ".txt";
+            File.WriteAllText(path, log);
             log = log + "[" + DateTime.Now.ToString("t") + "/" + type.ToString().ToUpper() + "] " +  line + System.Environment.NewLine;
         }
 
         public static void Log(string line)
         {
-            File.WriteAllText(AppDomain.CurrentDomain.BaseDirectory + @"\Console Debug\" + DateTime.Now.ToString("t"), log);
+            string folderName = DateTime.Now.ToString("t");
+            folderName = folderName.Replace(':', '-');
+            Directory.CreateDirectory(AppDomain.CurrentDomain.BaseDirectory + @"Console Debug\");
+            string path = AppDomain.CurrentDomain.BaseDirectory + @"Console Debug\" + folderName + ".txt";
+            File.WriteAllText(path, log);
             log = log + "[" + DateTime.Now.ToString("t") + "/" + "INFO" + "] " + line + System.Environment.NewLine;
         }
 
