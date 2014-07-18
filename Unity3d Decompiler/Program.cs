@@ -14,7 +14,7 @@ namespace Unity3dDecompiler
     {
         static void Main()
         {
-            Unpacker unpacker = new Unpacker(@"C:\Users\Ramda_000\Downloads\UberStrikeHeader4.6.0rc3.unity3d");
+            Unpacker unpacker = new Unpacker(@"C:\Users\Ramda_000\Documents\Git\Unity3D-Deompiler\Unity3d Decompiler\bin\Debug\WebPlayer.unity3d");
             ConsoleIO.WriteInfo("File Path: " + unpacker.FilePath);
             ConsoleIO.WriteInfo("File Name: " + unpacker.FileName);
             ConsoleIO.WriteInfo("File Extension: " + unpacker.FileExtension);

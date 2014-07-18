@@ -50,13 +50,14 @@ namespace Unity3dDecompiler.Unity
                 FileInfo[0] = fileReader.ReadString();
                 if (FileInfo[0] == "UnityWeb")
                 {
-                    fileReader.SkipBytes(4);
                     //File version
-                    FileInfo[1] = (string)fileReader.ReadByte().ToString();
+                    FileInfo[1] = fileReader.ReadInt().ToString();
                     //Unity Engine version
                     FileInfo[2] = fileReader.ReadString();
+                    ConsoleIO.Log("Unity WebPlayer version: " + FileInfo[1], ConsoleIO.LogType.Info);
                     //Full Unity Engine version
                     FileInfo[3] = fileReader.ReadString();
+                    ConsoleIO.Log("Unity Engine version: " + FileInfo[1], ConsoleIO.LogType.Info);
                     //Compressed file size.
                     FileInfo[4] = fileReader.ReadInt().ToString();
                     //Begin of compressed data/end of header

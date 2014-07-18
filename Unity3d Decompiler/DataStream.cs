@@ -23,15 +23,24 @@ namespace Unity3dDecompiler
 
         public int ReadInt()
         {
-            var bytes = new byte[4];
-            MainStream.Read(bytes, 0, 4);
+            var bytes = ReadByteArray(4);
             Array.Reverse(bytes);
             return BitConverter.ToInt32(bytes, 0);
+        }
+
+        public void WriteInt(int data)
+        {
+            WriteByteArray(BitConverter.GetBytes(data));
         }
 
         public byte ReadByte()
         {
             return (byte)MainStream.ReadByte();
+        }
+
+        public void WriteByte(byte data)
+        {
+            MainStream.WriteByte(data);
         }
 
         public byte[] ReadByteArray(int count)
@@ -61,6 +70,13 @@ namespace Unity3dDecompiler
                 null_teminator = (byte)MainStream.ReadByte();
             }
             return Encoding.ASCII.GetString(list.ToArray());
+        }
+
+        public void WriteString(string data)
+        {
+            byte[] bytes = new byte[data.Length + 1];
+            bytes = Encoding.ASCII.GetBytes(data);
+            bytes[bytes.Length] = 0x00;
         }
 
         public void SkipBytes(int count)
