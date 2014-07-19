@@ -79,4 +79,4 @@ Here is an example of a decompressed unity3d file's header, partly because make 
 - [ ] Complete CompressedFileHeader.cs
 - [ ] Clean the code.
 - [ ] Add repacking function.
-- [ ] Add output log file.
+- [x] Add output log file.
