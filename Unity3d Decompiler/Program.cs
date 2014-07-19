@@ -14,7 +14,7 @@ namespace Unity3dDecompiler
     {
         static void Main()
         {
-            Unpacker unpacker = new Unpacker(@"C:\Users\Ramda_000\Documents\Git\Unity3D-Deompiler\Unity3d Decompiler\bin\Debug\WebPlayer.unity3d");
+            Unpacker unpacker = new Unpacker(@"C:\Users\Ramda_000\Documents\Unity Test\Test\Tests.unity3d");
             ConsoleIO.WriteInfo("File Path: " + unpacker.FilePath);
             ConsoleIO.WriteInfo("File Name: " + unpacker.FileName);
             ConsoleIO.WriteInfo("File Extension: " + unpacker.FileExtension);
@@ -22,9 +22,22 @@ namespace Unity3dDecompiler
             unpacker.Unpack();
             ConsoleIO.WriteInfo("Sucessfully unpacked file");
             //byte[] shizz;
-            //shizz = SevenZipHelper.Compress(FileToRead(@"C:\Users\Ramda_000\Documents\Visual Studio 2012\Projects\Unity3d Decompiler\Unity3d Decompiler\bin\Debug\Modded.txt"));
-            //File.WriteAllBytes(@"C:\Users\Ramda_000\Documents\Visual Studio 2012\Projects\Unity3d Decompiler\Unity3d Decompiler\bin\Debug\Modded Compressed.txt", shizz);
+            //shizz = SevenZipHelper.Compress(unpacker.DecompressedFile.Bytes);
+
+            //byte[] test = null;
+            //test = concatBytes(unpacker.CompressedFile.HeaderBytes, shizz);
+            //File.WriteAllBytes(@"C:\Users\Ramda_000\Documents\Unity Test\Test\Stuff and things.unity3d", test);
+
+            Repacker repacker = new Repacker(@"C:\Users\Ramda_000\Documents\Git\Unity3D-Deompiler\Unity3d Decompiler\bin\Debug\Tests");
             Console.Read();
+        }
+
+        private static byte[] concatBytes(params byte[][] bytes)
+        {
+            List<byte> result = new List<byte>();
+            foreach (byte[] array in bytes)
+                result.AddRange(array);
+            return result.ToArray();
         }
     }
 }

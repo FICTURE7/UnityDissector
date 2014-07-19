@@ -1,0 +1,15 @@
+[8:57 AM/INFO] File path: C:\Users\Ramda_000\Documents\Unity Test\Test\Tests.unity3d
+[8:57 AM/INFO] File name: Tests
+[8:57 AM/INFO] File extension: .unity3d
+[8:57 AM/INFO] File Size: 30454
+[8:57 AM/INFO] Unity WebPlayer version: 3.x.x
+[8:57 AM/INFO] Unity Engine version: 4.5.1f3
+[8:57 AM/INFO] Compressed file size: 30454
+[8:57 AM/INFO] Offset of compressed data: 60
+[8:57 AM/INFO] Compressed file size: 30394
+[8:57 AM/INFO] Decompressed file size: 410360
+[8:57 AM/INFO] Compressed file size: 30454
+[8:57 AM/INFO] Begining of data in decompressed file: 148
+[8:57 AM/INFO] CONSOLE OUT:File Path: C:\Users\Ramda_000\Documents\Unity Test\Test\Tests.unity3d
+[8:57 AM/INFO] CONSOLE OUT:File Name: Tests
+[8:57 AM/INFO] CONSOLE OUT:File Extension: .unity3d

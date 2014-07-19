@@ -1,0 +1,32 @@
+[4:14 PM/INFO] File path: C:\Users\Ramda_000\Documents\Git\Unity3D-Deompiler\Unity3d Decompiler\bin\Debug\WebPlayer.unity3d
+[4:14 PM/INFO] File name: WebPlayer
+[4:14 PM/INFO] File extension: .unity3d
+[4:14 PM/INFO] File Size: 13741814
+[4:14 PM/INFO] Unity WebPlayer version: 3.x.x
+[4:14 PM/INFO] Unity Engine version: 4.1.5f1
+[4:14 PM/INFO] Compressed file size: 13741814
+[4:14 PM/INFO] Offset of compressed data: 60
+[4:14 PM/INFO] Compressed file size: 13708643
+[4:14 PM/INFO] Decompressed file size: 63866608
+[4:14 PM/INFO] Compressed file size: 63949256
+[4:14 PM/INFO] CONSOLE OUT:Compressed file size does not match header.
+[4:14 PM/INFO] Begining of data in decompressed file: 13741814
+[4:14 PM/INFO] CONSOLE OUT:File Path: C:\Users\Ramda_000\Documents\Git\Unity3D-Deompiler\Unity3d Decompiler\bin\Debug\WebPlayer.unity3d
+[4:14 PM/INFO] CONSOLE OUT:File Name: WebPlayer
+[4:14 PM/INFO] CONSOLE OUT:File Extension: .unity3d
+[4:14 PM/INFO] CONSOLE OUT:File Size: 13741814 bytes
+[4:14 PM/INFO] Decompressed file size: 63949576
+[4:14 PM/INFO] Decompressed file header size: 320
+[4:14 PM/INFO] Files: 
+[4:14 PM/INFO] Name: "zlib.net.dll" Size: 69632 Offset: 320
+[4:14 PM/INFO] Name: "JsonFx.Json.dll" Size: 81408 Offset: 69952
+[4:14 PM/INFO] Name: "Irc.dll" Size: 3072 Offset: 151360
+[4:14 PM/INFO] Name: "DecalSystem.Runtime.dll" Size: 82432 Offset: 154432
+[4:14 PM/INFO] Name: "Boo.Lang.dll" Size: 126464 Offset: 236864
+[4:14 PM/INFO] Name: "Assembly-UnityScript.dll" Size: 12800 Offset: 363328
+[4:14 PM/INFO] Name: "Assembly-UnityScript-firstpass.dll" Size: 37888 Offset: 376128
+[4:14 PM/INFO] Name: "Assembly-CSharp.dll" Size: 1990656 Offset: 414016
+[4:14 PM/INFO] Name: "Assembly-CSharp-firstpass.dll" Size: 31744 Offset: 2404672
+[4:14 PM/INFO] Name: "sharedassets0.assets" Size: 60040816 Offset: 2436416
+[4:14 PM/INFO] Name: "mainData" Size: 1472332 Offset: 62477232
+[4:14 PM/INFO] Name: "33Obf" Size: 10 Offset: 63949564

@@ -1,6 +1,0 @@
-[12:35 PM/INFO] Unity WebPlayer version: 3
-[12:35 PM/INFO] Unity Engine version: 3
-[12:35 PM/INFO] Compressed file size does not match header.
-[12:35 PM/INFO] File Path: C:\Users\Ramda_000\Documents\Git\Unity3D-Deompiler\Unity3d Decompiler\bin\Debug\WebPlayer.unity3d
-[12:35 PM/INFO] File Name: WebPlayer
-[12:35 PM/INFO] File Extension: .unity3d

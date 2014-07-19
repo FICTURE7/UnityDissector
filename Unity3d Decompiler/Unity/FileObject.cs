@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Unity3dDecompiler.Unity
 {
-    public class FileInfo
+    public class FileObject
     {
         public string Name { get; set; }
 

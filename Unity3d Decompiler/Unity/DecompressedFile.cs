@@ -21,8 +21,8 @@ namespace Unity3dDecompiler.Unity
         private byte[] _Bytes;
         public byte[] Bytes { get { return _Bytes; } }
 
-        private FileInfo[] _files;
-        public FileInfo[] Files { get { return _files; } }
+        private FileObject[] _files;
+        public FileObject[] Files { get { return _files; } }
 
         public DecompressedFile(byte[] file)
         {
@@ -62,15 +62,15 @@ namespace Unity3dDecompiler.Unity
             }
         }
 
-        public FileInfo[] ParseHeader()
+        public FileObject[] ParseHeader()
         {
             DataStream fileReader = new DataStream(_Stream);
             _fileCount = fileReader.ReadInt();
-            FileInfo[] files = new FileInfo[_fileCount];
+            FileObject[] files = new FileObject[_fileCount];
 
             for (int i = 0; i < _fileCount; i++)
             {
-                files[i] = new FileInfo();
+                files[i] = new FileObject();
                 files[i].Name = fileReader.ReadString();
                 files[i].Offset = fileReader.ReadInt();
                 files[i].Size = fileReader.ReadInt();

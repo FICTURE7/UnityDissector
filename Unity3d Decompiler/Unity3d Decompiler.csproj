@@ -41,12 +41,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Repacker.cs" />
     <Compile Include="Unity\CompressedFile.cs" />
     <Compile Include="ConsoleIO.cs" />
     <Compile Include="DataStream.cs" />
     <Compile Include="Unity\CompressedFileHeader.cs" />
     <Compile Include="Unity\DecompressedFile.cs" />
-    <Compile Include="Unity\FileInfo.cs" />
+    <Compile Include="Unity\FileObject.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SevenZip\Common\CommandLineParser.cs" />
