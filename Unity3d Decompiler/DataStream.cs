@@ -30,7 +30,9 @@ namespace Unity3dDecompiler
 
         public void WriteInt(int data)
         {
-            WriteByteArray(BitConverter.GetBytes(data));
+            byte[] bytes = BitConverter.GetBytes(data);
+            Array.Reverse(bytes);
+            WriteByteArray(bytes);
         }
 
         public byte ReadByte()
@@ -74,9 +76,10 @@ namespace Unity3dDecompiler
 
         public void WriteString(string data)
         {
-            byte[] bytes = new byte[data.Length + 1];
-            bytes = Encoding.ASCII.GetBytes(data);
-            bytes[bytes.Length] = 0x00;
+            byte[] bytes = Encoding.ASCII.GetBytes(data);
+            byte[] null_terminator = { 0x00 };
+            byte[] final = ConcatBytes(bytes, null_terminator);
+            MainStream.Write(final, 0, final.Length);
         }
 
         public void SkipBytes(int count)
@@ -87,6 +90,14 @@ namespace Unity3dDecompiler
         public void Goto(int offset)
         {
             MainStream.Position = offset;
+        }
+
+        private static byte[] ConcatBytes(params byte[][] bytes)
+        {
+            List<byte> result = new List<byte>();
+            foreach (byte[] array in bytes)
+                result.AddRange(array);
+            return result.ToArray();
         }
     }
 }

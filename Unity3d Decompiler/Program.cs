@@ -29,6 +29,7 @@ namespace Unity3dDecompiler
             //File.WriteAllBytes(@"C:\Users\Ramda_000\Documents\Unity Test\Test\Stuff and things.unity3d", test);
 
             Repacker repacker = new Repacker(@"C:\Users\Ramda_000\Documents\Git\Unity3D-Deompiler\Unity3d Decompiler\bin\Debug\Tests");
+            repacker.Repack();
             Console.Read();
         }
 
