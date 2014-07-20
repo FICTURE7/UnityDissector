@@ -11,6 +11,8 @@ namespace Unity3dDecompiler
     {
         private static string log;
 
+        private static string time_started = DateTime.Now.ToString("t").Replace(':', '.');
+
         public enum LogType
         {
             Info = 0,
@@ -59,20 +61,16 @@ namespace Unity3dDecompiler
 
         public static void Log(string line, LogType type)
         {
-            string folderName = DateTime.Now.ToString("t");
-            folderName = folderName.Replace(':', '-');
             Directory.CreateDirectory(AppDomain.CurrentDomain.BaseDirectory + @"Console Debug\");
-            string path = AppDomain.CurrentDomain.BaseDirectory + @"Console Debug\" + folderName + ".txt";
+            string path = AppDomain.CurrentDomain.BaseDirectory + @"Console Debug\" + time_started + ".txt";
             File.WriteAllText(path, log);
             log = log + "[" + DateTime.Now.ToString("t") + "/" + type.ToString().ToUpper() + "] " +  line + System.Environment.NewLine;
         }
 
         public static void Log(string line)
         {
-            string folderName = DateTime.Now.ToString("t");
-            folderName = folderName.Replace(':', '-');
             Directory.CreateDirectory(AppDomain.CurrentDomain.BaseDirectory + @"Console Debug\");
-            string path = AppDomain.CurrentDomain.BaseDirectory + @"Console Debug\" + folderName + ".txt";
+            string path = AppDomain.CurrentDomain.BaseDirectory + @"Console Debug\" + time_started + ".txt";
             File.WriteAllText(path, log);
             log = log + "[" + DateTime.Now.ToString("t") + "/" + "INFO" + "] " + line + System.Environment.NewLine;
         }
