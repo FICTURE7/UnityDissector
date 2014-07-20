@@ -77,6 +77,6 @@ Here is an example of a decompressed unity3d file's header, partly because make 
 ###TODO List
 - [ ] Complete documentation.
 - [x] Complete CompressedFileHeader.cs
-- [ ] Clean the code.
+- [ ] Clean the code which probably never end. :-)
 - [ ] Add repacking function.
 - [x] Add output log file.
