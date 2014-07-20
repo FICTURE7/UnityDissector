@@ -14,7 +14,7 @@ namespace Unity3dDecompiler
     {
         static void Main()
         {
-            Unpacker unpacker = new Unpacker(@"C:\Users\Ramda_000\Documents\Unity Test\Test\Tests.unity3d");
+            Unpacker unpacker = new Unpacker(@"C:\Users\Ramda_000\Documents\Unity Test\Test\Testss.unity3d");
             ConsoleIO.WriteInfo("File Path: " + unpacker.FilePath);
             ConsoleIO.WriteInfo("File Name: " + unpacker.FileName);
             ConsoleIO.WriteInfo("File Extension: " + unpacker.FileExtension);
@@ -28,7 +28,7 @@ namespace Unity3dDecompiler
             //test = concatBytes(unpacker.CompressedFile.HeaderBytes, shizz);
             //File.WriteAllBytes(@"C:\Users\Ramda_000\Documents\Unity Test\Test\Stuff and things.unity3d", test);
 
-            Repacker repacker = new Repacker(@"C:\Users\Ramda_000\Documents\Git\Unity3D-Deompiler\Unity3d Decompiler\bin\Debug\Tests");
+            Repacker repacker = new Repacker(@"C:\Users\Ramda_000\Documents\Git\Unity3D-Deompiler\Unity3d Decompiler\bin\Debug\Testss");
             repacker.Repack();
             Console.Read();
         }

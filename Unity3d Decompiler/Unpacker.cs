@@ -83,6 +83,7 @@ namespace Unity3dDecompiler
             Buffer.BlockCopy(_compressedFile.Bytes, _compressedFile.HeaderBytes.Length, buf, 0, _compressedFile.Bytes.Length - _compressedFile.HeaderBytes.Length);
 
             _decompressedFile = new DecompressedFile(SevenZipHelper.Decompress(buf));
+            File.WriteAllBytes(@"C:\Users\Ramda_000\Documents\Git\Unity3D-Deompiler\Unity3d Decompiler\bin\Debug\DecompressedFile.txt", _decompressedFile.Bytes);
             Extract();
         }
 

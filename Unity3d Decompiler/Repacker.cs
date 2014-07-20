@@ -31,12 +31,12 @@ namespace Unity3dDecompiler
             {
                 fullBytes = ConcatBytes(fullBytes, Files[i].Bytes);
             }
-            MakeHeader();
+            SetHeader();
         }
 
         public string[] GetFilesName(string directory)
         {
-            string[] filesPath = Directory.GetFiles(directory);
+            string[] filesPath = Directory.GetFiles(directory); //Still have to complete stuff and things here cause... Man, Brain.exe is not responding.
             string[] FileNames = new string[filesPath.Length];
             for (int i = 0; i < filesPath.Length; i++)
             {
@@ -46,7 +46,7 @@ namespace Unity3dDecompiler
             return FileNames;
         }
 
-        public byte[] MakeHeader()
+        public byte[] SetHeader()
         {
             Files[0].Offset = CalcSize();
             byte[] fullBytes = null;
@@ -63,8 +63,10 @@ namespace Unity3dDecompiler
                     fileStream.WriteString(Files[i].Name);
                     Files[i].Offset = Files[i - 1].Size + Files[i - 1].Offset;
                     fileStream.WriteInt(Files[i].Offset);
+                    fileStream.WriteInt(Files[i].Size);
                 }
 
+                fileStream.WriteByte(0x00); //Null terminator
                 fullBytes = stream.ToArray();
                 File.WriteAllBytes(@"C:\Users\Ramda_000\Documents\Git\Unity3D-Deompiler\Unity3d Decompiler\bin\Debug\Dump.txt", fullBytes);
                 return fullBytes;
@@ -73,7 +75,7 @@ namespace Unity3dDecompiler
 
         public int CalcSize()
         {
-            int Size = 0;
+            int Size = 5; //First 4 bytes and 1 bytes ending for null terminator
             for(int i = 0; i < Files.Length; i++)
             {
                 Size = Size + Files[i].Name.Length + 1 + 4 + 4;
