@@ -8,8 +8,10 @@ namespace Unity3dDecompiler.Unity
 {
     public class DecompressedFileHeader
     {
-        //Still not implemented and has no use
         public int FileCount { get; set; }
+
+        public byte[] Bytes { get; set; }
+
         public FileObject[] Files { get; set; }
     }
 }

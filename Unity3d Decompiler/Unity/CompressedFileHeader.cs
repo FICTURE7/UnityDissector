@@ -27,5 +27,7 @@ namespace Unity3dDecompiler.Unity
         public int CompressedFileSize2 { get; set; }
 
         public int DecompressedFileHeaderEndingOffset { get; set; } //Again. The huge variable name and don't forget if you have a better name let me know. :/
+
+        public byte[] Bytes { get; set; }
     }
 }
