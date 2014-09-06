@@ -20,6 +20,7 @@ namespace Unity3dDecompiler
             ConsoleIO.WriteInfo("File Extension: " + unpacker.FileExtension);
             ConsoleIO.WriteInfo("File Size: " + unpacker.FileSize + " bytes");
             unpacker.Unpack();
+            unpacker.Extract();
             ConsoleIO.WriteInfo("Sucessfully unpacked file");
             //byte[] shizz;
             //shizz = SevenZipHelper.Compress(unpacker.DecompressedFile.Bytes);
@@ -31,14 +32,6 @@ namespace Unity3dDecompiler
             Repacker repacker = new Repacker(@"C:\Users\Ramda_000\Documents\Git\Unity3D-Deompiler\Unity3d Decompiler\bin\Debug\Testss");
             repacker.Repack();
             Console.Read();
-        }
-
-        private static byte[] concatBytes(params byte[][] bytes)
-        {
-            List<byte> result = new List<byte>();
-            foreach (byte[] array in bytes)
-                result.AddRange(array);
-            return result.ToArray();
         }
     }
 }

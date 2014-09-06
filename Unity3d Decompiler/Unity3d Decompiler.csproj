@@ -47,6 +47,7 @@
     <Compile Include="DataStream.cs" />
     <Compile Include="Unity\CompressedFileHeader.cs" />
     <Compile Include="Unity\DecompressedFile.cs" />
+    <Compile Include="Unity\DecompressedFileHeader.cs" />
     <Compile Include="Unity\FileObject.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

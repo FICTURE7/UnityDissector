@@ -6,83 +6,76 @@ namespace Unity3dDecompiler.Unity
 {
     public class DecompressedFile
     {
-        private int _Size;
-        public int Size { get { return _Size; } }
-
-        private int _fileCount;
-        public int FileCount { get { return _fileCount; } }
-
-        private Stream _Stream;
-        public Stream Stream { get { return _Stream; } }
-
-        private byte[] _HeaderBytes;
-        public byte[] HeaderBytes { get { return _HeaderBytes; } }
-
-        private byte[] _Bytes;
-        public byte[] Bytes { get { return _Bytes; } }
-
-        private FileObject[] _files;
-        public FileObject[] Files { get { return _files; } }
-
         public DecompressedFile(byte[] file)
         {
-            _Stream = new MemoryStream(file);
+            _Stream = new DataStream(file);
 
             _Bytes = file;
             _Size = file.Length;
-            _files = ParseHeader();
-            _HeaderBytes = GetHeaderBytes(_files[0].Offset);
+
+            ParseHeader();
+            GetHeaderBytes();
             GetFiles();
 
             ConsoleIO.Log("Decompressed file size: " + _Bytes.Length);
             ConsoleIO.Log("Decompressed file header size: " + _HeaderBytes.Length);
             ConsoleIO.Log("Files: ");
-            for (int i = 0; i < _files.Length; i++)
+            for (int i = 0; i < _Files.Length; i++)
             {
-                ConsoleIO.Log("Name: \"" + _files[i].Name + "\" Size: " +  _files[i].Size + " Offset: " + _files[i].Offset);
+                ConsoleIO.Log("Name: \"" + _Files[i].Name + "\" Size: " + _Files[i].Size + " Offset: " + _Files[i].Offset);
             }
         }
 
-        public byte[] GetHeaderBytes(int offset)
-        {
-            _HeaderBytes = new byte[offset];
-            Buffer.BlockCopy(_Bytes, 0, _HeaderBytes, 0, offset);
+        private int _Size;
+        private int _FileCount;
+        private byte[] _HeaderBytes;
+        private byte[] _Bytes;
+        private DataStream _Stream;
+        private FileObject[] _Files;
 
-            return _HeaderBytes;
+        public int Size { get { return _Size; } }
+        public int FileCount { get { return _FileCount; } }
+        public byte[] HeaderBytes { get { return _HeaderBytes; } }
+        public byte[] Bytes { get { return _Bytes; } }
+        public DataStream Stream { get { return _Stream; } }
+        public FileObject[] Files { get { return _Files; } }
+
+        public void GetHeaderBytes()
+        {
+            _HeaderBytes = new byte[_Files[0].Offset];
+            Buffer.BlockCopy(_Bytes, 0, _HeaderBytes, 0, _Files[0].Offset);
         }
 
         public void GetFiles()
         {
-            DataStream fileReader = new DataStream(_Stream);
-            for (int i = 0; i < _fileCount; i++)
+            for (int i = 0; i < _FileCount; i++)
             {
-                _files[i].Bytes = new byte[_files[i].Size];
-                fileReader.MainStream.Position = _files[i].Offset;
-                _files[i].Bytes = fileReader.ReadByteArray(_files[i].Bytes.Length);
+                _Files[i].Bytes = new byte[_Files[i].Size];
+                _Stream.MainStream.Position = _Files[i].Offset;
+                _Files[i].Bytes = _Stream.ReadByteArray(_Files[i].Bytes.Length);
             }
         }
 
-        public FileObject[] ParseHeader()
+        public void ParseHeader()
         {
-            DataStream fileReader = new DataStream(_Stream);
-            _fileCount = fileReader.ReadInt();
-            FileObject[] files = new FileObject[_fileCount];
+            _FileCount = _Stream.ReadInt();
+            FileObject[] files = new FileObject[_FileCount];
 
-            for (int i = 0; i < _fileCount; i++)
+            for (int i = 0; i < _FileCount; i++)
             {
                 files[i] = new FileObject();
-                files[i].Name = fileReader.ReadString();
-                files[i].Offset = fileReader.ReadInt();
-                files[i].Size = fileReader.ReadInt();
+                files[i].Name = _Stream.ReadString();
+                files[i].Offset = _Stream.ReadInt();
+                files[i].Size = _Stream.ReadInt();
             }
-            return files;
+            _Files = files;
         }
 
         public void ExtractFiles(string path)
         {
-            for (int i = 0; i < _fileCount; i++)
+            for (int i = 0; i < _FileCount; i++)
             {
-                _files[i].WriteFile(path);
+                _Files[i].WriteFile(path);
             }
         }
     }

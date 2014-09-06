@@ -10,11 +10,8 @@ namespace Unity3dDecompiler.Unity
     public class FileObject
     {
         public string Name { get; set; }
-
         public int Offset { get; set; }
-
         public int Size { get; set; }
-
         public byte[] Bytes { get; set; }
 
         public void WriteFile(string path)

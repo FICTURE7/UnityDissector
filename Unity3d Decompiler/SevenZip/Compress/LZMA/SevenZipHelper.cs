@@ -6,16 +6,8 @@ namespace SevenZip.Compression.LZMA
     public static class SevenZipHelper
     {
         //static int dictionary = 1 << 23;
-        static int dictionary = 524288;
+        static int dictionary = 524288; /*1 << 23*/
 
-        // static Int32 posStateBits = 2;
-        // static Int32 litContextBits = 3; // for normal files
-        // UInt32 litContextBits = 0; // for 32-bit data
-        // static Int32 litPosBits = 0;
-        // UInt32 litPosBits = 2; // for 32-bit data
-        // static Int32 algorithm = 2;
-        // static Int32 numFastBytes = 128;
-	
 	    //Peter Bromberg's helper code. Big thanks for that.
         static bool eos = false;
 
@@ -56,6 +48,11 @@ namespace SevenZip.Compression.LZMA
             for (int i = 0; i < 8; i++)
                 outStream.WriteByte((Byte)(fileSize >> (8 * i)));
             encoder.Code(inStream, outStream, -1, -1, null);
+
+            //Clear Memory
+            inStream.Dispose();
+            encoder = null;
+
             return outStream.ToArray();
         }
 
@@ -83,9 +80,12 @@ namespace SevenZip.Compression.LZMA
             long compressedSize = newInStream.Length - newInStream.Position;
             decoder.Code(newInStream, newOutStream, compressedSize, outSize, null);
 
-            byte[] b = newOutStream.ToArray();
+            //Clear Memory
+            properties2 = null;
+            newInStream.Dispose();
+            decoder = null;
 
-            return b;
+            return newOutStream.ToArray();
         }
     }
 }

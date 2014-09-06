@@ -10,6 +10,10 @@ namespace Unity3dDecompiler
 {
     public class Repacker
     {
+        //////////////////////////////////////////////////////
+        /////////// HAS NOT YET BEEN IMPLEMENTED /////////////
+        //////////////////////////////////////////////////////
+
         public FileObject[] Files { get; set; }
 
         public Repacker(string directory)
@@ -68,7 +72,7 @@ namespace Unity3dDecompiler
 
                 fileStream.WriteByte(0x00); //Null terminator
                 fullBytes = stream.ToArray();
-                File.WriteAllBytes(@"C:\Users\Ramda_000\Documents\Git\Unity3D-Deompiler\Unity3d Decompiler\bin\Debug\Dump.txt", fullBytes);
+                File.WriteAllBytes(@"C:\Users\Ramda_000\Documents\Git\Unity3D-Deompiler\Unity3d Decompiler\bin\Debug\Dump.txt", fullBytes); //For debugging purposes
                 return fullBytes;
             }
         }
