@@ -7,11 +7,13 @@ Some classes written(pretty badly) in C# that can be used to decompile/unpack .u
 ```javascript
     Unpacker unpacker = new Unpacker("Directory pointing to file");
     unpacker.Unpack();
+    unpacker.Extract();
 ```
 or
 ```javascript
     Unpacker unpacker = new Unpacker("Directory pointing to file");
     unpacker.BruteForceUnpack(250); //Not recommanded way to do it. :/
+    unpacker.Extract();
 ```
 =================
 ###Data Types
