@@ -1,7 +1,7 @@
-Unity3D-Deompiler
+Unity3D-Disassembler
 =================
 
-Some classes written(pretty badly) in C# that can be used to decompile/unpack .unity3d files.
+Some classes written(pretty badly) in C# that can be used to unpack .unity3d files.
 
 ###Usage Example
 ```javascript
