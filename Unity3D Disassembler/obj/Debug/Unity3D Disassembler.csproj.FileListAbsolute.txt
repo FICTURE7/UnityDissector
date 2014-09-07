@@ -1,6 +1,0 @@
-C:\Users\Ramda_000\Documents\Git\Unity3D-Deompiler\Unity3D Disassembler\bin\Debug\Unity3d Decompiler.exe.config
-C:\Users\Ramda_000\Documents\Git\Unity3D-Deompiler\Unity3D Disassembler\obj\Debug\Unity3d Decompiler.exe
-C:\Users\Ramda_000\Documents\Git\Unity3D-Deompiler\Unity3D Disassembler\obj\Debug\Unity3d Decompiler.pdb
-C:\Users\Ramda_000\Documents\Git\Unity3D-Deompiler\Unity3D Disassembler\obj\Debug\Unity3D Disassembler.csprojResolveAssemblyReference.cache
-C:\Users\Ramda_000\Documents\Git\Unity3D-Deompiler\Unity3D Disassembler\bin\Debug\Unity3d Decompiler.exe
-C:\Users\Ramda_000\Documents\Git\Unity3D-Deompiler\Unity3D Disassembler\bin\Debug\Unity3d Decompiler.pdb

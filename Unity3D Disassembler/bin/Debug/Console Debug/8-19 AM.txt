@@ -1,2 +1,0 @@
-[8:19 AM/INFO] File path: C:\Users\Ramda_000\Documents\Unity Test\Tests.unity3d
-[8:19 AM/INFO] File name: Tests

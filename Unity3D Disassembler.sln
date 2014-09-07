@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity3D Disassembler", "Unity3D Disassembler\Unity3D Disassembler.csproj", "{0187B4F2-EE4B-419F-8108-80FE3B8876B2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity3D Disassembler", "Source\Unity3D Disassembler.csproj", "{0187B4F2-EE4B-419F-8108-80FE3B8876B2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
