@@ -4,16 +4,16 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Unity3DDisassembler.Common;
+using Unity3DDisassembler.IO;
 using Unity3DDisassembler.Unity;
 
 namespace Unity3DDisassembler
 {
     public class Repacker
     {
-        //////////////////////////////////////////////////////
-        /////////// HAS NOT YET BEEN IMPLEMENTED /////////////
-        //////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////
+        /////////// HAS NOT YET BEEN FULLY IMPLEMENTED ////////////
+        ///////////////////////////////////////////////////////////
 
         public FileObject[] Files { get; set; }
 

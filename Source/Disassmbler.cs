@@ -1,8 +1,6 @@
 ﻿using System;
 using System.IO;
-using System.Text;
-using System.Threading.Tasks;
-using Unity3DDisassembler.Common;
+using Unity3DDisassembler.IO;
 using Unity3DDisassembler.Compression.LZMA;
 using Unity3DDisassembler.Unity;
 
@@ -21,26 +19,26 @@ namespace Unity3DDisassembler
                 if (Path.GetExtension(filePath) == ".unity3d")
                 {
                     _filePath = filePath;
-                    ConsoleIO.Log("File path: " + _filePath);
+                    ConsoleIO.LogString("File path: " + _filePath);
                     _fileName = Path.GetFileNameWithoutExtension(filePath);
-                    ConsoleIO.Log("File name: " + _fileName);
+                    ConsoleIO.LogString("File name: " + _fileName);
                     _fileExtension = Path.GetExtension(filePath);
-                    ConsoleIO.Log("File extension: " + _fileExtension);
+                    ConsoleIO.LogString("File extension: " + _fileExtension);
                     _fileBytes = ReadFile(filePath);
                     _fileSize = _fileBytes.LongLength;
-                    ConsoleIO.Log("File Size: " + _fileSize);
+                    ConsoleIO.LogString("File Size: " + _fileSize);
 
                     _compressedFile = new CompressedFile(_fileBytes);
                 }
                 else
                 {
-                    ConsoleIO.WriteError("Invalid file type");
+                    ConsoleIO.WriteLine("Invalid file type", ConsoleIO.LogType.Error);
                     throw new NotSupportedException("Invalid file type, the file type was not a .unity3d");
                 }
             }
             else
             {
-                ConsoleIO.WriteError("Could not reach file");
+                ConsoleIO.WriteLine("Could not reach file", ConsoleIO.LogType.Error);
                 throw new ArgumentNullException("filePath", "filePath was null :[");
             }
         }
@@ -55,7 +53,7 @@ namespace Unity3DDisassembler
             {
                 _fileBytes = fileBytes;
                 _fileSize = fileBytes.LongLength;
-                ConsoleIO.Log("File Size: " + _fileSize);
+                ConsoleIO.LogString("File Size: " + _fileSize);
             }
             else
             {
@@ -85,7 +83,7 @@ namespace Unity3DDisassembler
         /// <param name="timesToTry">Times to try</param>
         public void BurteForceDisassemble(int timesToTry)
         {
-            ConsoleIO.WriteInfo("Brute force disassembling file.");
+            ConsoleIO.WriteLine("Brute force disassembling file.");
             byte[] buf = null;
             for (int i = 0; i < timesToTry; i++)
             {
@@ -95,11 +93,11 @@ namespace Unity3DDisassembler
                     Buffer.BlockCopy(_compressedFile.Bytes, i, buf, 0, buf.Length);
 
                     LzmaUtils.Decompress(buf);
-                    ConsoleIO.WriteInfo("Was able to decompress file at offset: " + i.ToString("X"));
+                    ConsoleIO.WriteLine("Was able to decompress file at offset: " + i.ToString("X"));
                     break;
                 }
                 catch { }
-                ConsoleIO.WriteError("Failed to brute force unpack file. Tried: " + i.ToString());
+                ConsoleIO.WriteLine("Failed to brute force unpack file. Tried: " + i.ToString(), ConsoleIO.LogType.Error);
             }
 
             _decompressedFile = new DecompressedFile(LzmaUtils.Decompress(buf));

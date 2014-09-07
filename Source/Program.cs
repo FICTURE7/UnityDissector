@@ -1,5 +1,5 @@
 ﻿using System;
-using Unity3DDisassembler.Common;
+using Unity3DDisassembler.IO;
 
 namespace Unity3DDisassembler
 {
@@ -8,13 +8,15 @@ namespace Unity3DDisassembler
         static void Main()
         {
             Disassembler unpacker = new Disassembler(@"C:\Users\Ramda_000\Documents\Unity Test\Test\Testss.unity3d");
-            ConsoleIO.WriteInfo("File Path: " + unpacker.FilePath);
-            ConsoleIO.WriteInfo("File Name: " + unpacker.FileName);
-            ConsoleIO.WriteInfo("File Extension: " + unpacker.FileExtension);
-            ConsoleIO.WriteInfo("File Size: " + unpacker.FileSize + " bytes");
+            ConsoleIO.WriteLine("File Path: " + unpacker.FilePath);
+            ConsoleIO.WriteLine("File Name: " + unpacker.FileName);
+            ConsoleIO.WriteLine("File Extension: " + unpacker.FileExtension);
+            ConsoleIO.WriteLine("File Size: " + unpacker.FileSize + " bytes");
             unpacker.Disassemble();
+            ConsoleIO.WriteLine("Sucessfully disassembled file");
+            ConsoleIO.WriteLine("Extracting files at dir: " + AppDomain.CurrentDomain.BaseDirectory + unpacker.FileName);
             unpacker.Extract();
-            ConsoleIO.WriteInfo("Sucessfully unpacked file");
+            ConsoleIO.WriteLine("Operation done!");
             Console.ReadLine();
 
 

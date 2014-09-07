@@ -1,5 +1,5 @@
 ﻿using System;
-using Unity3DDisassembler.Common;
+using Unity3DDisassembler.IO;
 
 namespace Unity3DDisassembler.Unity
 {
@@ -42,38 +42,38 @@ namespace Unity3DDisassembler.Unity
                     _Header.BuildVerison = _Stream.ReadInt();
 
                     _Header.WebPlayerVersion = _Stream.ReadString();
-                    ConsoleIO.Log("Unity WebPlayer version: " + _Header.WebPlayerVersion, ConsoleIO.LogType.Info);
+                    ConsoleIO.LogString("Unity WebPlayer version: " + _Header.WebPlayerVersion, ConsoleIO.LogType.Info);
 
                     _Header.UnityEngineVersion = _Stream.ReadString();
-                    ConsoleIO.Log("Unity Engine version: " + _Header.UnityEngineVersion, ConsoleIO.LogType.Info);
+                    ConsoleIO.LogString("Unity Engine version: " + _Header.UnityEngineVersion, ConsoleIO.LogType.Info);
 
                     _Header.CompressedFileSize = _Stream.ReadInt();
-                    ConsoleIO.Log("Compressed file size: " + _Header.CompressedFileSize, ConsoleIO.LogType.Info);
+                    ConsoleIO.LogString("Compressed file size: " + _Header.CompressedFileSize, ConsoleIO.LogType.Info);
 
                     _Header.OffsetCompressedData = _Stream.ReadInt();
-                    ConsoleIO.Log("Offset of compressed data: " + _Header.OffsetCompressedData, ConsoleIO.LogType.Info);
+                    ConsoleIO.LogString("Offset of compressed data: " + _Header.OffsetCompressedData, ConsoleIO.LogType.Info);
                     _Stream.SkipBytes(8); //Skip the '00 00 00 01 00 00 00 01' bytes
 
                     _Header.CompressedFileSizeWithoutHeader = _Stream.ReadInt();
-                    ConsoleIO.Log("Compressed file size without header: " + _Header.CompressedFileSizeWithoutHeader, ConsoleIO.LogType.Info);
+                    ConsoleIO.LogString("Compressed file size without header: " + _Header.CompressedFileSizeWithoutHeader, ConsoleIO.LogType.Info);
 
                     _Header.DecompressedFileSize = _Stream.ReadInt();
-                    ConsoleIO.Log("Decompressed file size: " + _Header.DecompressedFileSize, ConsoleIO.LogType.Info);
+                    ConsoleIO.LogString("Decompressed file size: " + _Header.DecompressedFileSize, ConsoleIO.LogType.Info);
 
                     _Header.CompressedFileSize2 = _Stream.ReadInt();
-                    ConsoleIO.Log("Compressed file size: " + _Header.CompressedFileSize2, ConsoleIO.LogType.Info);
+                    ConsoleIO.LogString("Compressed file size: " + _Header.CompressedFileSize2, ConsoleIO.LogType.Info);
 
                     _Header.DecompressedFileHeaderEndingOffset = _Stream.ReadInt();
-                    ConsoleIO.Log("Begining of data in decompressed file: " + _Header.DecompressedFileHeaderEndingOffset, ConsoleIO.LogType.Info);
+                    ConsoleIO.LogString("Begining of data in decompressed file: " + _Header.DecompressedFileHeaderEndingOffset, ConsoleIO.LogType.Info);
                 }
                 else
                 {
-                    ConsoleIO.WriteError("File header is not a unity3d file's header.");
+                    ConsoleIO.WriteLine("File header is not a unity3d file's header.", ConsoleIO.LogType.Error);
                 }
             }
             else
             {
-                ConsoleIO.WriteError("File was null.");
+                ConsoleIO.WriteLine("File was null.", ConsoleIO.LogType.Error);
             }
         }
 

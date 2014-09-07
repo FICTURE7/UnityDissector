@@ -1,6 +1,6 @@
 ﻿using System;
 using System.IO;
-using Unity3DDisassembler.Common;
+using Unity3DDisassembler.IO;
 using Unity3DDisassembler.Unity;
 
 namespace Unity3DDisassembler.Unity
@@ -23,12 +23,12 @@ namespace Unity3DDisassembler.Unity
             GetHeaderBytes();
             GetFiles();
 
-            ConsoleIO.Log("Decompressed file size: " + _Bytes.Length);
-            ConsoleIO.Log("Decompressed file header size: " + _Header.Bytes.Length);
-            ConsoleIO.Log("Files: ");
+            ConsoleIO.LogString("Decompressed file size: " + _Bytes.Length);
+            ConsoleIO.LogString("Decompressed file header size: " + _Header.Bytes.Length);
+            ConsoleIO.LogString("Files: ");
             for (int i = 0; i < _Header.Files.Length; i++)
             {
-                ConsoleIO.Log("Name: \"" + _Header.Files[i].Name + "\" Size: " + _Header.Files[i].Size + " Offset: " + _Header.Files[i].Offset);
+                ConsoleIO.LogString("Name: \"" + _Header.Files[i].Name + "\" Size: " + _Header.Files[i].Size + " Offset: " + _Header.Files[i].Offset);
             }
         }
 

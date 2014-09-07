@@ -48,8 +48,8 @@
     <Compile Include="Compression\LZ\LzOutWindow.cs" />
     <Compile Include="Repacker.cs" />
     <Compile Include="Unity\CompressedFile.cs" />
-    <Compile Include="Common\ConsoleIO.cs" />
-    <Compile Include="Common\DataStream.cs" />
+    <Compile Include="IO\ConsoleIO.cs" />
+    <Compile Include="IO\DataStream.cs" />
     <Compile Include="Unity\CompressedFileHeader.cs" />
     <Compile Include="Unity\DecompressedFile.cs" />
     <Compile Include="Unity\DecompressedFileHeader.cs" />
