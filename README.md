@@ -78,5 +78,6 @@ Here is an example of a decompressed unity3d file's header, partly because make 
 =================
 ###TODO List
 - [ ] Complete documentation.
-- [ ] Refactor the whole program
+- [ ] Refactor the whole program. Almost done. :DD
 - [x] Add output log file.
+- [ ] Make it become a library.
