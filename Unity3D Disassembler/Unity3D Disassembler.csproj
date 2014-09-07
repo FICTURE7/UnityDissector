@@ -48,8 +48,8 @@
     <Compile Include="Compression\LZ\LzOutWindow.cs" />
     <Compile Include="Repacker.cs" />
     <Compile Include="Unity\CompressedFile.cs" />
-    <Compile Include="ConsoleIO.cs" />
-    <Compile Include="DataStream.cs" />
+    <Compile Include="Common\ConsoleIO.cs" />
+    <Compile Include="Common\DataStream.cs" />
     <Compile Include="Unity\CompressedFileHeader.cs" />
     <Compile Include="Unity\DecompressedFile.cs" />
     <Compile Include="Unity\DecompressedFileHeader.cs" />
@@ -59,12 +59,12 @@
     <Compile Include="Compression\LZMA\LzmaBase.cs" />
     <Compile Include="Compression\LZMA\LzmaDecoder.cs" />
     <Compile Include="Compression\LZMA\LzmaEncoder.cs" />
-    <Compile Include="Compression\LZMA\SevenZipHelper.cs" />
+    <Compile Include="Compression\LZMA\LzmaUtils.cs" />
     <Compile Include="Compression\RangeCoder\RangeCoder.cs" />
     <Compile Include="Compression\RangeCoder\RangeCoderBit.cs" />
     <Compile Include="Compression\RangeCoder\RangeCoderBitTree.cs" />
     <Compile Include="Compression\ICoder.cs" />
-    <Compile Include="Unpacker.cs" />
+    <Compile Include="Disassmbler.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

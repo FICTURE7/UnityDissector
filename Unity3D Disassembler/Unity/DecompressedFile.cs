@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using Unity3DDisassembler.Common;
 using Unity3DDisassembler.Unity;
 
 namespace Unity3DDisassembler.Unity

@@ -3,7 +3,7 @@ using System.Text;
 using System.IO;
 using System.Collections.Generic;
 
-namespace Unity3DDisassembler
+namespace Unity3DDisassembler.Common
 {
     public class DataStream
     {

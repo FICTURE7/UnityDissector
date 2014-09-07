@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Unity3DDisassembler
+namespace Unity3DDisassembler.Common
 {
-    class ConsoleIO
+    class ConsoleIO //TODO: REFACTOR DAT SHEIT
     {
         private static string log;
 
