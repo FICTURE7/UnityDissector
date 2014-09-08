@@ -44,7 +44,7 @@ namespace Unity3DDisassembler
         }
 
         /// <summary>
-        /// The Disassembler which will disassemble the file and extract it
+        /// The Disassembler which will disassemble the file
         /// </summary>
         /// <param name="fileBytes">File to disassemble in bytes</param>
         public Disassembler(byte[] fileBytes)
