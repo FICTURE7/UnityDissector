@@ -78,6 +78,7 @@ Here is an example of a decompressed unity3d file's header, partly because make 
 =================
 ###TODO List
 - [ ] Complete documentation.
-- [ ] Refactor the whole program. Almost done. :DD
+- [ ] Refactor the whole program.
+- [ ] Use a custom version of System.IO.BinaryReader instead of Unity3DDisassembler.IO.DataStream
 - [x] Add output log file.
 - [ ] Make it become a library.
