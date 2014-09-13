@@ -15,6 +15,7 @@ namespace Unity3DDisassembler
         /////////// HAS NOT YET BEEN FULLY IMPLEMENTED ////////////
         ///////////////////////////////////////////////////////////
 
+        public DecompressedFileHeader DecompressedFileHeader { get; set; }
         public FileObject[] Files { get; set; }
 
         public Repacker(string directory)

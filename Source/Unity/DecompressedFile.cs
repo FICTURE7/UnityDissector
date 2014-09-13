@@ -13,7 +13,7 @@ namespace Unity3DDisassembler.Unity
         /// <param name="file">Decompressed file bytes</param>
         public DecompressedFile(byte[] file)
         {
-            _Stream = new DataStream(file);
+            _FileReader = new FileReader(file);
             _Header = new DecompressedFileHeader();
 
             _Bytes = file;
@@ -22,41 +22,34 @@ namespace Unity3DDisassembler.Unity
             ParseHeader();
             GetHeaderBytes();
             GetFiles();
-
-            ConsoleIO.LogString("Decompressed file size: " + _Bytes.Length);
-            ConsoleIO.LogString("Decompressed file header size: " + _Header.Bytes.Length);
-            ConsoleIO.LogString("Files: ");
-            for (int i = 0; i < _Header.Files.Length; i++)
-            {
-                ConsoleIO.LogString("Name: \"" + _Header.Files[i].Name + "\" Size: " + _Header.Files[i].Size + " Offset: " + _Header.Files[i].Offset);
-            }
         }
 
         private int _Size;
         private int _FileCount;
         private byte[] _Bytes;
-        private DataStream _Stream;
+        private FileReader _FileReader;
         private DecompressedFileHeader _Header;
 
         public int Size { get { return _Size; } }
         public int FileCount { get { return _FileCount; } }
         public byte[] Bytes { get { return _Bytes; } }
-        public DataStream Stream { get { return _Stream; } }
+        public FileReader FileReader { get { return _FileReader; } }
         public DecompressedFileHeader Header { get { return _Header; } }
 
         public void ParseHeader()
         {
-            _FileCount = _Stream.ReadInt();
-            FileObject[] files = new FileObject[_FileCount];
-
+            _FileCount = _FileReader.ReadInt32();
+            _Header.Files = new FileObject[_FileCount];
+            ConsoleIO.Log("-------------Parsing Compressed Header-------------");
             for (int i = 0; i < _FileCount; i++)
             {
-                files[i] = new FileObject();
-                files[i].Name = _Stream.ReadString();
-                files[i].Offset = _Stream.ReadInt();
-                files[i].Size = _Stream.ReadInt();
+                _Header.Files[i] = new FileObject();
+                _Header.Files[i].Name = _FileReader.ReadString();
+                _Header.Files[i].Offset = _FileReader.ReadInt32();
+                _Header.Files[i].Size = _FileReader.ReadInt32();
+                ConsoleIO.Log("Name: \"" + _Header.Files[i].Name + "\" Size: " + _Header.Files[i].Size + " Offset: " + _Header.Files[i].Offset);
             }
-            _Header.Files = files;
+            ConsoleIO.Log("-------------Operation done!-------------");
         }
 
         public void GetHeaderBytes()
@@ -70,8 +63,8 @@ namespace Unity3DDisassembler.Unity
             for (int i = 0; i < _FileCount; i++)
             {
                 _Header.Files[i].Bytes = new byte[_Header.Files[i].Size];
-                _Stream.MainStream.Position = _Header.Files[i].Offset;
-                _Header.Files[i].Bytes = _Stream.ReadByteArray(_Header.Files[i].Bytes.Length);
+                _FileReader.Goto(_Header.Files[i].Offset);
+                _Header.Files[i].Bytes = _FileReader.ReadByteArray(_Header.Files[i].Bytes.Length);
             }
         }
 

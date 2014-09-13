@@ -5,10 +5,11 @@ namespace Unity3DDisassembler.IO
 {
     public class ConsoleIO
     {
-        public static string Log { get; set; }
-        public static string LogName = DateTime.Now.ToString("MM-dd-yyyy-HH-mm-ss");
-        public static string LogPath = AppDomain.CurrentDomain.BaseDirectory + @"logs\" + LogName + ".txt";
-        public static bool LogAvailable
+        public static bool FullLog { get; set; }
+        public static string OutLog { get; set; }
+        public static string OutLogName = DateTime.Now.ToString("MM-dd-yyyy-HH-mm-ss");
+        public static string OutLogPath = AppDomain.CurrentDomain.BaseDirectory + @"logs\" + OutLogName + ".txt";
+        public static bool OutLogAvailable
         {
             get
             {
@@ -32,38 +33,47 @@ namespace Unity3DDisassembler.IO
         public static void WriteLine(string line)
         {
             WriteDate(LogType.Info);
-            LogString("CONSOLE OUT:" + line);
             Console.WriteLine(line);
+            if (!FullLog) Log("[Console]" + line);
         }
 
         public static void WriteLine(string line, LogType Type)
         {
             WriteDate(Type);
-            LogString("CONSOLE OUT:" + line);
             Console.WriteLine(line);
+            if (!FullLog) Log("[Console]" + line);
         }
 
-        public static void LogString(string line, LogType type)
+        public static void Log(string line)
         {
-            if (!LogAvailable)
+            if (!OutLogAvailable)
+            {
                 Directory.CreateDirectory(AppDomain.CurrentDomain.BaseDirectory + @"logs\");
-            File.WriteAllText(LogPath, Log);
-            Log = Log + "[" + DateTime.Now.ToString("HH:mm") + "/" + type.ToString().ToUpper() + "]: " + line + System.Environment.NewLine;
+            }
+            if (FullLog)
+            {
+                WriteDate(LogType.Info);
+                Console.WriteLine(line);
+            }
+
+            OutLog = OutLog + "[" + DateTime.Now.ToString("HH:mm") + "/INFO]" + line + System.Environment.NewLine;
+            File.WriteAllText(OutLogPath, OutLog);
         }
 
-        public static void LogString(string line)
+        public static void Log(string line, LogType type)
         {
-            if (!LogAvailable)
+            if (!OutLogAvailable)
+            {
                 Directory.CreateDirectory(AppDomain.CurrentDomain.BaseDirectory + @"logs\");
-            File.WriteAllText(LogPath, Log);
-            Log = Log + "[" + DateTime.Now.ToString("HH:mm") + "/INFO]: " + line + System.Environment.NewLine;
-        }
+            }
+            if (FullLog)
+            {
+                WriteDate(type);
+                Console.WriteLine(line);
+            }
 
-        private static void WriteColor(string line, ConsoleColor color)
-        {
-            Console.ForegroundColor = color;
-            Console.Write(line);
-            Console.ResetColor();
+            OutLog = OutLog + "[" + DateTime.Now.ToString("HH:mm") + "/" + type.ToString().ToUpper() + "]" + line + System.Environment.NewLine;
+            File.WriteAllText(OutLogPath, OutLog);
         }
 
         private static void WriteDate(LogType Type)

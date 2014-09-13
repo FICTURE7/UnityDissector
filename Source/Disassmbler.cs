@@ -6,7 +6,7 @@ using Unity3DDisassembler.Unity;
 
 namespace Unity3DDisassembler
 {
-    public class Disassembler
+    public class Disassembler : IDisposable
     {
         /// <summary>
         /// The Disassembler which will disassemble the file and extract it
@@ -19,14 +19,14 @@ namespace Unity3DDisassembler
                 if (Path.GetExtension(filePath) == ".unity3d")
                 {
                     _filePath = filePath;
-                    ConsoleIO.LogString("File path: " + _filePath);
+                    ConsoleIO.Log("File path: " + _filePath);
                     _fileName = Path.GetFileNameWithoutExtension(filePath);
-                    ConsoleIO.LogString("File name: " + _fileName);
+                    ConsoleIO.Log("File name: " + _fileName);
                     _fileExtension = Path.GetExtension(filePath);
-                    ConsoleIO.LogString("File extension: " + _fileExtension);
+                    ConsoleIO.Log("File extension: " + _fileExtension);
                     _fileBytes = ReadFile(filePath);
                     _fileSize = _fileBytes.LongLength;
-                    ConsoleIO.LogString("File Size: " + _fileSize);
+                    ConsoleIO.Log("File Size: " + _fileSize);
 
                     _compressedFile = new CompressedFile(_fileBytes);
                 }
@@ -53,7 +53,7 @@ namespace Unity3DDisassembler
             {
                 _fileBytes = fileBytes;
                 _fileSize = fileBytes.LongLength;
-                ConsoleIO.LogString("File Size: " + _fileSize);
+                ConsoleIO.Log("File Size: " + _fileSize);
             }
             else
             {
@@ -111,7 +111,17 @@ namespace Unity3DDisassembler
             byte[] compressed_file_body = new byte[_compressedFile.Bytes.Length - _compressedFile.Header.Bytes.Length]; //Get the body of the compressed file
             Buffer.BlockCopy(_compressedFile.Bytes, _compressedFile.Header.Bytes.Length, compressed_file_body, 0, _compressedFile.Bytes.Length - _compressedFile.Header.Bytes.Length);
 
+            ConsoleIO.Log("Decompressing the .unity3d with Lzma...");
             _decompressedFile = new DecompressedFile(LzmaUtils.Decompress(compressed_file_body));
+        }
+
+        public void List()
+        {
+            ConsoleIO.WriteLine("List: ");
+            for (int i = 0; i < _decompressedFile.Header.Files.Length; i++)
+            {
+                ConsoleIO.WriteLine(_decompressedFile.Header.Files[i].Name);
+            }
         }
 
         /// <summary>
@@ -147,6 +157,16 @@ namespace Unity3DDisassembler
             {
                 _decompressedFile.ExtractFiles(path + _fileName);
             }
+        }
+
+        public void Dispose() //Faily attempt to reduce memory usage. :[
+        {
+            if (_fileBytes != null) _fileBytes = null;
+            if (_fileExtension != null) _fileExtension = null;
+            if (_fileName != null) _fileName = null;
+            if (_filePath != null) _filePath = null;
+            if (_compressedFile != null) _compressedFile = null;
+            if (_decompressedFile != null) _decompressedFile = null;
         }
 
         private byte[] ReadFile(string filePath)
