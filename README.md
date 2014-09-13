@@ -1,7 +1,7 @@
 Unity3D-Disassembler
 =================
 
-Some classes written(pretty badly) in C# that can be used to unpack .unity3d files.
+Some classes written in C# that can be used to unpack .unity3d files.
 
 ###Usage Example
 ```javascript
@@ -14,6 +14,12 @@ or
     Unpacker unpacker = new Unpacker("Directory pointing to file");
     unpacker.BruteForceUnpack(250); //Not recommanded way to do it. :/
     unpacker.Extract();
+```
+
+To excute the command-line application
+
+```
+    Unity3DDisassembler extract file.unity3d
 ```
 =================
 ###Data Types
@@ -28,7 +34,7 @@ string | N/A | N/A | Null terminated |
 This section will be giving you the info about .unity3d files header and other stuffs and thing.
 >Some of the info might not be 100% true.
 
-.unity3d files content are compressed using the  [LZMA](http://en.wikipedia.org/wiki/Lempel%E2%80%93Ziv%E2%80%93Markov_chain_algorithm) compression algorithm I guess its beacause of its high compression ratio. You can get the latest 7Zip LZMA SDK [here](http://www.7-zip.org/sdk.html).
+.unity3d files content are compressed using the  [LZMA](http://en.wikipedia.org/wiki/Lempel%E2%80%93Ziv%E2%80%93Markov_chain_algorithm) compression algorithm. I guess its beacause of its high compression ratio. You can get the latest 7Zip LZMA SDK [here](http://www.7-zip.org/sdk.html).
 
 ####Compressed File Header
 
@@ -82,3 +88,8 @@ Here is an example of a decompressed unity3d file's header, partly because make 
 - [ ] Use a custom version of System.IO.BinaryReader instead of Unity3DDisassembler.IO.DataStream
 - [x] Add output log file.
 - [ ] Make it become a library.
+
+=================
+###Download
+
+Latest release can be downloaded at the [release](https://github.com/FICTURE7/Unity3D-Disassembler/releases) page
