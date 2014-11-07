@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using Unity3DDisassembler.IO;
 
 namespace Unity3DDisassembler.Unity
 {
@@ -8,6 +9,24 @@ namespace Unity3DDisassembler.Unity
         public int Offset { get; set; }
         public int Size { get; set; }
         public byte[] Bytes { get; set; }
+
+        public void ReadFileObject(FileReader reader)
+        {
+            Name = reader.ReadString();
+            Offset = reader.ReadInt32();
+            Size = reader.ReadInt32();
+            //reader.BaseStream.Position = Offset;
+            //Bytes = reader.ReadByteArray(Size);
+        }
+
+        public void WriteFileObject(FileWriter writer)
+        {
+            writer.WriteString(Name);
+            writer.WriteInt32(Offset);
+            writer.WriteInt32(Size);
+            //writer.BaseStream.Position = Offset;
+            //writer.WriteByteArray(Bytes);
+        }
 
         public void WriteFile(string path)
         {

@@ -9,9 +9,9 @@ namespace Unity3DDisassembler
     public class Disassembler : IDisposable
     {
         /// <summary>
-        /// The Disassembler which will disassemble the file and extract it
+        /// The Disassembler which will disassemble the file and extract it.
         /// </summary>
-        /// <param name="filePath">Path pointing to file</param>
+        /// <param name="filePath">Path pointing to file.</param>
         public Disassembler(string filePath)
         {
             if (filePath != null)
@@ -44,9 +44,9 @@ namespace Unity3DDisassembler
         }
 
         /// <summary>
-        /// The Disassembler which will disassemble the file
+        /// Initializes a new instance of Disassmebler class.
         /// </summary>
-        /// <param name="fileBytes">File to disassemble in bytes</param>
+        /// <param name="fileBytes">File to disassemble in bytes.</param>
         public Disassembler(byte[] fileBytes)
         {
             if (fileBytes != null)
@@ -78,7 +78,7 @@ namespace Unity3DDisassembler
         public DecompressedFile DecompressedFile { get { return _decompressedFile; } }
 
         /// <summary>
-        /// Try to disassemble the .unity3d file
+        /// Try to disassemble the .unity3d file.
         /// </summary>
         /// <param name="timesToTry">Times to try</param>
         public void BurteForceDisassemble(int timesToTry)
@@ -94,25 +94,26 @@ namespace Unity3DDisassembler
 
                     LzmaUtils.Decompress(buf);
                     ConsoleIO.WriteLine("Was able to decompress file at offset: " + i.ToString("X"));
+                    _decompressedFile = new DecompressedFile(LzmaUtils.Decompress(buf));
                     break;
                 }
                 catch { }
                 ConsoleIO.WriteLine("Failed to brute force unpack file. Tried: " + i.ToString(), ConsoleIO.LogType.Error);
             }
-
-            _decompressedFile = new DecompressedFile(LzmaUtils.Decompress(buf));
         }
 
         /// <summary>
-        /// Disassemble the .unity3d file
+        /// Disassemble the .unity3d file.
         /// </summary>
         public void Disassemble()
         {
-            byte[] compressed_file_body = new byte[_compressedFile.Bytes.Length - _compressedFile.Header.Bytes.Length]; //Get the body of the compressed file
-            Buffer.BlockCopy(_compressedFile.Bytes, _compressedFile.Header.Bytes.Length, compressed_file_body, 0, _compressedFile.Bytes.Length - _compressedFile.Header.Bytes.Length);
+            _compressedFile.ReadFile();
+            _compressedFile.FileReader.BaseStream.Position = _compressedFile.Header.CompressedFileHeaderSize;
+            byte[] compressed_file_body = _compressedFile.FileReader.ReadByteArray(_compressedFile.Header.CompressedFileSizeWithoutHeader); //Get the body of the compressed file
 
             ConsoleIO.Log("Decompressing the .unity3d with Lzma...");
             _decompressedFile = new DecompressedFile(LzmaUtils.Decompress(compressed_file_body));
+            _decompressedFile.ReadFile();
         }
 
         public void List()
@@ -126,7 +127,7 @@ namespace Unity3DDisassembler
 
         /// <summary>
         /// Extract all files at the disassembler's directory with the .unity file's name 
-        /// as root directory
+        /// as root directory.
         /// </summary>
         public void Extract()
         {
@@ -143,9 +144,9 @@ namespace Unity3DDisassembler
 
         /// <summary>
         /// Extract all files at given path with the .unity3d file's name
-        /// as root directory
+        /// as root directory.
         /// </summary>
-        /// <param name="path">Path to extract files</param>
+        /// <param name="path">Path to extract files.</param>
         public void ExtractTo(string path)
         {
             if (!Directory.Exists(path + _fileName))//Make sure that the directory was created

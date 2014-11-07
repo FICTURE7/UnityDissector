@@ -76,10 +76,8 @@ namespace Unity3DDisassembler.IO
 
         public void WriteString(string data)
         {
-            byte[] bytes = Encoding.ASCII.GetBytes(data);
-            byte[] null_terminator = { 0x00 };
-            byte[] final = ConcatBytes(bytes, null_terminator);
-            MainStream.Write(final, 0, final.Length);
+            WriteByteArray(Encoding.ASCII.GetBytes(data));
+            WriteByte(0x00);
         }
 
         public void SkipBytes(int count)

@@ -49,7 +49,7 @@
     <Compile Include="IO\DataStream.cs" />
     <Compile Include="IO\FileReader.cs" />
     <Compile Include="IO\FileWriter.cs" />
-    <Compile Include="Repacker.cs" />
+    <Compile Include="Assembler.cs" />
     <Compile Include="Unity\CompressedFile.cs" />
     <Compile Include="IO\ConsoleIO.cs" />
     <Compile Include="Unity\CompressedFileHeader.cs" />

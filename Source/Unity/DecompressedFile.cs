@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using Unity3DDisassembler.IO;
 using Unity3DDisassembler.Unity;
@@ -13,64 +14,58 @@ namespace Unity3DDisassembler.Unity
         /// <param name="file">Decompressed file bytes</param>
         public DecompressedFile(byte[] file)
         {
+            _FileWriter = new FileWriter();
             _FileReader = new FileReader(file);
             _Header = new DecompressedFileHeader();
 
             _Bytes = file;
             _Size = file.Length;
+        }
 
-            ParseHeader();
-            GetHeaderBytes();
-            GetFiles();
+        public DecompressedFile()
+        {
+            _FileWriter = new FileWriter();
+            _Header = new DecompressedFileHeader();
         }
 
         private int _Size;
         private int _FileCount;
         private byte[] _Bytes;
         private FileReader _FileReader;
+        private FileWriter _FileWriter;
         private DecompressedFileHeader _Header;
 
         public int Size { get { return _Size; } }
         public int FileCount { get { return _FileCount; } }
         public byte[] Bytes { get { return _Bytes; } }
         public FileReader FileReader { get { return _FileReader; } }
+        public FileWriter FileWriter { get { return _FileWriter; } }
         public DecompressedFileHeader Header { get { return _Header; } }
 
-        public void ParseHeader()
+        public void ReadFile()
         {
-            _FileCount = _FileReader.ReadInt32();
-            _Header.Files = new FileObject[_FileCount];
-            ConsoleIO.Log("-------------Parsing Compressed Header-------------");
-            for (int i = 0; i < _FileCount; i++)
+            _Header.ReadHeader(_FileReader);
+            for (int i = 0; i < _Header.FileCount; i++)
             {
-                _Header.Files[i] = new FileObject();
-                _Header.Files[i].Name = _FileReader.ReadString();
-                _Header.Files[i].Offset = _FileReader.ReadInt32();
-                _Header.Files[i].Size = _FileReader.ReadInt32();
-                ConsoleIO.Log("Name: \"" + _Header.Files[i].Name + "\" Size: " + _Header.Files[i].Size + " Offset: " + _Header.Files[i].Offset);
+                _FileReader.BaseStream.Position = _Header.Files[i].Offset;
+                _Header.Files[i].Bytes = _FileReader.ReadByteArray(_Header.Files[i].Size);
             }
-            ConsoleIO.Log("-------------Operation done!-------------");
         }
 
-        public void GetHeaderBytes()
+        public void WriteFile()
         {
-            _Header.Bytes = new byte[_Header.Files[0].Offset];
-            Buffer.BlockCopy(_Bytes, 0, _Header.Bytes, 0, _Header.Files[0].Offset);
-        }
-
-        public void GetFiles()
-        {
-            for (int i = 0; i < _FileCount; i++)
+            _Header.CalculateOffsets();
+            _Header.WriteHeader(_FileWriter);
+            for (int i = 0; i < _Header.FileCount; i++)
             {
-                _Header.Files[i].Bytes = new byte[_Header.Files[i].Size];
-                _FileReader.Goto(_Header.Files[i].Offset);
-                _Header.Files[i].Bytes = _FileReader.ReadByteArray(_Header.Files[i].Bytes.Length);
+                _FileWriter.BaseStream.Position = _Header.Files[i].Offset;
+                _FileWriter.WriteByteArray(_Header.Files[i].Bytes);
             }
         }
 
         public void ExtractFiles(string path)
         {
-            for (int i = 0; i < _FileCount; i++)
+            for (int i = 0; i < _Header.FileCount; i++)
             {
                 _Header.Files[i].WriteFile(path);
             }

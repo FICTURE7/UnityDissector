@@ -12,6 +12,11 @@ namespace Unity3DDisassembler.IO
             BaseStream = new MemoryStream(buffer);
         }
 
+        public FileWriter()
+        {
+            BaseStream = new MemoryStream();
+        }
+
         public FileWriter(Stream stream)
         {
             BaseStream = stream;

@@ -18,7 +18,7 @@ namespace Unity3DDisassembler
             {
                 if (IsValidCommand(args[0]))
                 {
-                    if (args.Length == 1)
+                    if (args.Length == 1) //1 parameter required commands
                     {
                         if (args[0] == "help")
                         {
@@ -38,12 +38,20 @@ namespace Unity3DDisassembler
                             disassembler.Extract();
                             ConsoleIO.WriteLine("Operation done!");
                         }
-                        if (args[0] == "list")
+                        else if (args[0] == "list")
                         {
                             ConsoleIO.FullLog = false;
                             Disassembler disassembler = new Disassembler(args[1]);
                             disassembler.Disassemble();
                             disassembler.List();
+                        }
+                        else if (args[0] == "assemble")
+                        {
+                            Assembler assembler = new Assembler(args[1]);
+                            assembler.Assemble();
+                            ConsoleIO.WriteLine("Sucessfully assembled file");
+                            assembler.WriteFile("BetaAssembledFile.unity3d");
+                            ConsoleIO.WriteLine("Operation done!");
                         }
                     }
 
@@ -59,6 +67,14 @@ namespace Unity3DDisassembler
                             disassembler.ExtractTo(args[2]);
                             ConsoleIO.WriteLine("Operation done!");
                         }
+                        else if (args[0] == "assemble")
+                        {
+                            Assembler assembler = new Assembler(args[1]);
+                            assembler.Assemble();
+                            ConsoleIO.WriteLine("Sucessfully assembled file");
+                            assembler.WriteFile(args[2]);
+                            ConsoleIO.WriteLine("Operation done!");
+                        }
                     }
                 }
                 else
@@ -72,23 +88,21 @@ namespace Unity3DDisassembler
             {
                 WriteCommads();
             }
-
-
-            //byte[] shizz;
-            //shizz = SevenZipHelper.Compress(unpacker.DecompressedFile.Bytes);
-
-            //byte[] test = null;
-            //test = concatBytes(unpacker.CompressedFile.HeaderBytes, shizz);
-            //File.WriteAllBytes(@"C:\Users\Ramda_000\Documents\Unity Test\Test\Stuff and things.unity3d", test);
-
-            //Repacker repacker = new Repacker(@"C:\Users\Ramda_000\Documents\Git\Unity3D-Deompiler\Unity3d Decompiler\bin\Debug\Testss");
-            //repacker.Repack();
-            //Console.Read();
         }
+
+        //static void main()
+        //{
+        //    while (true)
+        //    {
+        //        Main(Console.ReadLine().Split(' '));
+        //    }
+        //}
 
         static void WriteCommads()
         {
             ConsoleIO.WriteLine("Available Commands:");
+            ConsoleIO.WriteLine("assemble         parameters: directory");
+            ConsoleIO.WriteLine("assemble         parameters: directory, fileName");
             ConsoleIO.WriteLine("extract          parameters: directory");
             ConsoleIO.WriteLine("extractTo        parameters: directory");
             ConsoleIO.WriteLine("list             parameters: directory");
@@ -98,6 +112,7 @@ namespace Unity3DDisassembler
         static void InitializeCommands()
         {
             Commands = new List<string>();
+            Commands.Add("assemble");
             Commands.Add("extract");
             Commands.Add("extractTo");
             Commands.Add("list");
