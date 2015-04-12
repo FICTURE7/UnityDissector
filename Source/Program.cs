@@ -7,6 +7,7 @@ namespace Unity3DDisassembler
 {
     class Program
     {
+        //TODO: Improve this thing
         static List<string> Commands;
 
         static void Main(string[] args)
