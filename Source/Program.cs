@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using Unity3DDisassembler.IO;
+using Unity3DDisassembler.Unity;
 
 namespace Unity3DDisassembler
 {
@@ -9,94 +10,20 @@ namespace Unity3DDisassembler
     {
         static List<string> Commands;
 
-        static void Main(string[] args)
+        static void Main()
         {
-            Console.WindowWidth = 100;
+            var webArchive = new WebArchive(@"C:\Users\Ramda_000\Documents\GitHub\Unity3D-Disassembler\Source\bin\Debug\WebPortal(1)\WebPortal(1).unity3d");
+            webArchive.OpenNew();
+            webArchive.Close(true);
+            //for (int i = 0; i < webArchive.FileCount; i++)
+            //{
+            //    Console.WriteLine("FileName: {0}\nSize: {1}\nOffset: {2}\n", webArchive[i].Name,
+            //        webArchive[i].Size, webArchive[i].Offset);
+            //}
+            //webArchive.Extract();
 
-            InitializeCommands();
-            if (args.Length > 0)
-            {
-                if (IsValidCommand(args[0]))
-                {
-                    if (args.Length == 1) //1 parameter required commands
-                    {
-                        if (args[0] == "help")
-                        {
-                            WriteCommads();
-                        }
-                    }
-
-                    if (args.Length == 2) //2 parameter required commands
-                    {
-                        if (args[0] == "extract")
-                        {
-                            ConsoleIO.FullLog = true;
-                            Disassembler disassembler = new Disassembler(args[1]);
-                            disassembler.Disassemble();
-                            ConsoleIO.WriteLine("Sucessfully disassembled file");
-                            ConsoleIO.WriteLine("Extracting files at directory: " + "\\" + disassembler.FileName);
-                            disassembler.Extract();
-                            ConsoleIO.WriteLine("Operation done!");
-                        }
-                        else if (args[0] == "list")
-                        {
-                            ConsoleIO.FullLog = false;
-                            Disassembler disassembler = new Disassembler(args[1]);
-                            disassembler.Disassemble();
-                            disassembler.List();
-                        }
-                        else if (args[0] == "assemble")
-                        {
-                            Assembler assembler = new Assembler(args[1]);
-                            assembler.Assemble();
-                            ConsoleIO.WriteLine("Sucessfully assembled file");
-                            assembler.WriteFile("BetaAssembledFile.unity3d");
-                            ConsoleIO.WriteLine("Operation done!");
-                        }
-                    }
-
-                    if (args.Length == 3) //3 parameter required commands
-                    {
-                        if (args[0] == "extractTo")
-                        {
-                            ConsoleIO.FullLog = true;
-                            Disassembler disassembler = new Disassembler(args[1]);
-                            disassembler.Disassemble();
-                            ConsoleIO.WriteLine("Sucessfully disassembled file");
-                            ConsoleIO.WriteLine("Extracting files at directory: " + args[2]);
-                            disassembler.ExtractTo(args[2]);
-                            ConsoleIO.WriteLine("Operation done!");
-                        }
-                        else if (args[0] == "assemble")
-                        {
-                            Assembler assembler = new Assembler(args[1]);
-                            assembler.Assemble();
-                            ConsoleIO.WriteLine("Sucessfully assembled file");
-                            assembler.WriteFile(args[2]);
-                            ConsoleIO.WriteLine("Operation done!");
-                        }
-                    }
-                }
-                else
-                {
-                    ConsoleIO.WriteLine("Unknown command");
-                    ConsoleIO.WriteLine("");
-                    WriteCommads();
-                }
-            }
-            else
-            {
-                WriteCommads();
-            }
+            Console.ReadLine();
         }
-
-        //static void main()
-        //{
-        //    while (true)
-        //    {
-        //        Main(Console.ReadLine().Split(' '));
-        //    }
-        //}
 
         static void WriteCommads()
         {
@@ -104,7 +31,7 @@ namespace Unity3DDisassembler
             ConsoleIO.WriteLine("assemble         parameters: directory");
             ConsoleIO.WriteLine("assemble         parameters: directory, fileName");
             ConsoleIO.WriteLine("extract          parameters: directory");
-            ConsoleIO.WriteLine("extractTo        parameters: directory");
+            ConsoleIO.WriteLine("extract          parameters: directory, fileName");
             ConsoleIO.WriteLine("list             parameters: directory");
             ConsoleIO.WriteLine("help             parameters: none");
         }
@@ -114,7 +41,7 @@ namespace Unity3DDisassembler
             Commands = new List<string>();
             Commands.Add("assemble");
             Commands.Add("extract");
-            Commands.Add("extractTo");
+            Commands.Add("extract");
             Commands.Add("list");
             Commands.Add("help");
         }

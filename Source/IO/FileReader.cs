@@ -27,6 +27,7 @@ namespace Unity3DDisassembler.IO
         }
 
         public Stream BaseStream { get; set; }
+        public long Position { get { return BaseStream.Position; } set { BaseStream.Position = value; } }
 
         public byte ReadByte()
         {
@@ -108,7 +109,7 @@ namespace Unity3DDisassembler.IO
 
         public void SkipBytes(int count)
         {
-            BaseStream.Position = BaseStream.Position + count;
+            BaseStream.Position += count;
         }
 
         public void Goto(int offset)

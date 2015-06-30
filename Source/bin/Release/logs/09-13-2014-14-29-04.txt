@@ -1,5 +1,0 @@
-[14:29/INFO][Console]Available Commands:
-[14:29/INFO][Console]extract          parameters: directory
-[14:29/INFO][Console]extractTo        parameters: directory
-[14:29/INFO][Console]list             parameters: directory
-[14:29/INFO][Console]help             parameters: none

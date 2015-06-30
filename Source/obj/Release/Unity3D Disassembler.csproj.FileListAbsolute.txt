@@ -1,6 +1,0 @@
-C:\Users\Ramda_000\Documents\GitHub\Unity3D-Disassembler\Source\bin\Release\Unity3DDisassembler.exe.config
-C:\Users\Ramda_000\Documents\GitHub\Unity3D-Disassembler\Source\bin\Release\Unity3DDisassembler.exe
-C:\Users\Ramda_000\Documents\GitHub\Unity3D-Disassembler\Source\bin\Release\Unity3DDisassembler.pdb
-C:\Users\Ramda_000\Documents\GitHub\Unity3D-Disassembler\Source\obj\Release\Unity3D Disassembler.csprojResolveAssemblyReference.cache
-C:\Users\Ramda_000\Documents\GitHub\Unity3D-Disassembler\Source\obj\Release\Unity3DDisassembler.exe
-C:\Users\Ramda_000\Documents\GitHub\Unity3D-Disassembler\Source\obj\Release\Unity3DDisassembler.pdb

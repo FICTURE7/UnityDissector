@@ -46,16 +46,10 @@
     <Compile Include="Compression\LZ\LzBinTree.cs" />
     <Compile Include="Compression\LZ\LzInWindow.cs" />
     <Compile Include="Compression\LZ\LzOutWindow.cs" />
-    <Compile Include="IO\DataStream.cs" />
     <Compile Include="IO\FileReader.cs" />
     <Compile Include="IO\FileWriter.cs" />
-    <Compile Include="Assembler.cs" />
-    <Compile Include="Unity\CompressedFile.cs" />
     <Compile Include="IO\ConsoleIO.cs" />
-    <Compile Include="Unity\CompressedFileHeader.cs" />
-    <Compile Include="Unity\DecompressedFile.cs" />
-    <Compile Include="Unity\DecompressedFileHeader.cs" />
-    <Compile Include="Unity\FileObject.cs" />
+    <Compile Include="Unity\WebArchiveFile.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Compression\LZMA\LzmaBase.cs" />
@@ -66,7 +60,7 @@
     <Compile Include="Compression\RangeCoder\RangeCoderBit.cs" />
     <Compile Include="Compression\RangeCoder\RangeCoderBitTree.cs" />
     <Compile Include="Compression\ICoder.cs" />
-    <Compile Include="Disassmbler.cs" />
+    <Compile Include="Unity\WebArchive.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

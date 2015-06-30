@@ -23,6 +23,7 @@ namespace Unity3DDisassembler.IO
         }
 
         public Stream BaseStream { get; set; }
+        public long Position { get { return BaseStream.Position; } set { BaseStream.Position = value; } }
 
         public void WriteByte(byte data)
         {
