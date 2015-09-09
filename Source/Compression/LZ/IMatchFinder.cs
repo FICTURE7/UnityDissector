@@ -2,7 +2,7 @@
 
 using System;
 
-namespace Unity3DDisassembler.Compression.LZ
+namespace UnityDissector.Compression.LZ
 {
     interface IInWindowStream
     {

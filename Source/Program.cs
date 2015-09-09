@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using Unity3DDisassembler.IO;
-using Unity3DDisassembler.Unity;
+using UnityDissector.IO;
+using UnityDissector.Unity;
 
-namespace Unity3DDisassembler
+namespace UnityDissector
 {
     class Program
     {

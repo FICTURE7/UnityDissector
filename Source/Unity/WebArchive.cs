@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using Unity3DDisassembler.Compression.LZMA;
-using Unity3DDisassembler.IO;
+using UnityDissector.Compression.LZMA;
+using UnityDissector.IO;
 
-namespace Unity3DDisassembler.Unity
+namespace UnityDissector.Unity
 {
     public class WebArchive
     {

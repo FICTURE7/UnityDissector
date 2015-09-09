@@ -2,7 +2,7 @@
 
 using System;
 
-namespace Unity3DDisassembler.Compression
+namespace UnityDissector.Compression
 {
     /// <summary>
     /// The exception that is thrown when an error in input stream occurs during decoding.
@@ -54,7 +54,7 @@ namespace Unity3DDisassembler.Compression
         /// <param name="progress">
         /// callback progress reference.
         /// </param>
-        /// <exception cref="Unity3DDisassembler.DataErrorException">
+        /// <exception cref="UnityDissector.DataErrorException">
         /// if input stream is not valid
         /// </exception>
         void Code(System.IO.Stream inStream, System.IO.Stream outStream,

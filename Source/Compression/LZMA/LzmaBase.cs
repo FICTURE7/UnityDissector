@@ -1,6 +1,6 @@
 // LzmaBase.cs
 
-namespace Unity3DDisassembler.Compression.LZMA
+namespace UnityDissector.Compression.LZMA
 {
     internal abstract class Base
     {

@@ -1,7 +1,7 @@
 ﻿using System.IO;
-using Unity3DDisassembler.IO;
+using UnityDissector.IO;
 
-namespace Unity3DDisassembler.Unity
+namespace UnityDissector.Unity
 {
     public class WebArchiveFile
     {

@@ -1,6 +1,6 @@
 ﻿// Common/CRC.cs
 
-namespace Unity3DDisassembler.Compression.Common
+namespace UnityDissector.Compression.Common
 {
     public class CRC
     {

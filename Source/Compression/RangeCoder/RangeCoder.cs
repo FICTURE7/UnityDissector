@@ -1,6 +1,6 @@
 using System;
 
-namespace Unity3DDisassembler.Compression.RangeCoder
+namespace UnityDissector.Compression.RangeCoder
 {
     class Encoder
     {

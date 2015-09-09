@@ -1,10 +1,10 @@
 ﻿// LzBinTree.cs
 
 using System;
-using Unity3DDisassembler.Compression;
-using Unity3DDisassembler.Compression.Common;
+using UnityDissector.Compression;
+using UnityDissector.Compression.Common;
 
-namespace Unity3DDisassembler.Compression.LZ
+namespace UnityDissector.Compression.LZ
 {
     public class BinTree : InWindow, IMatchFinder
     {

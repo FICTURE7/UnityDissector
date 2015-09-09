@@ -1,6 +1,6 @@
 ﻿// LzOutWindow.cs
 
-namespace Unity3DDisassembler.Compression.LZ
+namespace UnityDissector.Compression.LZ
 {
     public class OutWindow
     {

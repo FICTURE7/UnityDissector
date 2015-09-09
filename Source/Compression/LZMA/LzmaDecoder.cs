@@ -2,7 +2,7 @@
 
 using System;
 
-namespace Unity3DDisassembler.Compression.LZMA
+namespace UnityDissector.Compression.LZMA
 {
     using RangeCoder;
 

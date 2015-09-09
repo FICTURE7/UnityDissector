@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 
-namespace Unity3DDisassembler.IO
+namespace UnityDissector.IO
 {
     public class FileReader
     {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
-namespace Unity3DDisassembler.IO
+namespace UnityDissector.IO
 {
     public class FileWriter
     {

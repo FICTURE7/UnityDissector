@@ -1,7 +1,7 @@
 using System;
 using System.IO;
 
-namespace Unity3DDisassembler.Compression.LZMA
+namespace UnityDissector.Compression.LZMA
 {
     public static class LzmaUtils
     {
@@ -47,7 +47,7 @@ namespace Unity3DDisassembler.Compression.LZMA
             {
                 MemoryStream inStream = new MemoryStream(inputBytes);
                 MemoryStream outStream = new MemoryStream();
-                Unity3DDisassembler.Compression.LZMA.Encoder encoder = new Unity3DDisassembler.Compression.LZMA.Encoder();
+                UnityDissector.Compression.LZMA.Encoder encoder = new UnityDissector.Compression.LZMA.Encoder();
                 encoder.SetCoderProperties(propIDs, properties);
                 encoder.WriteCoderProperties(outStream);
                 long fileSize = inStream.Length;
@@ -78,7 +78,7 @@ namespace Unity3DDisassembler.Compression.LZMA
             {
                 MemoryStream newInStream = new MemoryStream(inputBytes);
 
-                Unity3DDisassembler.Compression.LZMA.Decoder decoder = new Unity3DDisassembler.Compression.LZMA.Decoder();
+                UnityDissector.Compression.LZMA.Decoder decoder = new UnityDissector.Compression.LZMA.Decoder();
 
                 newInStream.Seek(0, 0);
                 MemoryStream newOutStream = new MemoryStream();
