@@ -77,10 +77,9 @@ namespace UnityDissector.Unity
                 throw new InvalidDataException(string.Format("Expected 0x00 at: {0}.", fileReader.Position.ToString("X2")));
             fileReader.Position = compressedHeaderSize;
 
-            //read compressed body
+            //decompress compressed body
             var fileBody = fileReader.ReadByteArray(compressedBodySize);
             var decompressedFile = LzmaUtils.Decompress(fileBody);
-            File.WriteAllBytes(@"C:\Users\Ramda_000\Documents\GitHub\Unity3D-Disassembler\Source\bin\Debug\decompressed.txt", decompressedFile);
 
             //read decompressed header
             fileReader = new FileReader(decompressedFile);
@@ -108,11 +107,8 @@ namespace UnityDissector.Unity
 
         public void Close(bool write)
         {
-            if (!write)
-            {
-                
+            if (!write)  
                 return;
-            }
 
             var fileWriter = new FileWriter();
             var headerSize = 5;
