@@ -59,6 +59,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommandLine\CommandLineHandler.cs" />
+    <Compile Include="CommandLine\Option.cs" />
+    <Compile Include="CommandLine\OptionHandlers.cs" />
     <Compile Include="Compression\Common\CRC.cs" />
     <Compile Include="Compression\LZ\IMatchFinder.cs" />
     <Compile Include="Compression\LZ\LzBinTree.cs" />
