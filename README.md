@@ -1,6 +1,9 @@
 # UnityDissector
 Command-line application that can extract files from .unity3d format.
 
+#### Note
+Does not support Unity 5.
+
 ## Compiling
 The simplest way to compile it is by using Visual Studio and press `F6` or by using MonoDevelop.
 
