@@ -13,11 +13,6 @@ namespace UnityDissector
         public static CommandLineHandler CommandLineHandler { get; set; }
         public static void Main(string[] args)
         {
-            args = new string[]
-            {
-                "-h"
-            };
-
             CommandLineHandler = new CommandLineHandler()
             {
                 Description = "Program that extracts compressed files from .unity3d format.",
